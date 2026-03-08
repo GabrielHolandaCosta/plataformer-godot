@@ -40,6 +40,7 @@ levels/        → game levels
 prefabs/       → reusable objects
 scripts/       → main scripts
 shaders/       → shaders used in the game
+
 🚀 How to Run the Project
 
 Install Godot Engine
@@ -55,37 +56,6 @@ Click Import
 Select the project folder
 
 Run the main scene
-
-🤝 Contributing
-
-To work on the project:
-
-Clone the repository
-
-git clone https://github.com/GabrielHolandaCosta/plataformer-godot
-
-Make your changes
-
-Commit and push
-
-git add .
-git commit -m "describe your change"
-git push
-
-To update your local project with new changes:
-
-git pull
-⚠️ Good Practices
-
-Avoid editing the same files at the same time, especially:
-
-scene files (.tscn)
-
-shared scripts
-
-tilemaps
-
-Divide tasks between collaborators to avoid conflicts.
 
 Example:
 
