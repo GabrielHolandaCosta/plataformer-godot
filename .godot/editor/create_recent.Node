@@ -1,0 +1,15 @@
+RayCast2D
+Node2D
+RemoteTransform2D
+CollisionShape2D
+Area2D
+AnimationPlayer
+Sprite2D
+CharacterBody2D
+AnimatedSprite2D
+AnimatableBody2D
+ParallaxLayer
+ParallaxBackground
+Camera2D
+TileMap
+StaticBody2D
