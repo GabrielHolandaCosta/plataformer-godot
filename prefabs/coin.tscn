@@ -85,6 +85,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_8cc8k")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

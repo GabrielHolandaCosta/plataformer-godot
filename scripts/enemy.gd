@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var acceleration: float = 900.0
 @export var gravity_multiplier: float = 1.0
 @export var start_direction: int = -1
+@export var enemy_score := 100
 
 @onready var wall_detector: RayCast2D = $wall_detector
 @onready var texture: Sprite2D = $texture
@@ -59,9 +60,10 @@ func _update_visual_direction() -> void:
 
 
 func die() -> void:
+	if is_dead:
+		return
+		
 	print("die chamado")
-	queue_free()
-	
 	is_dead = true
 	collision.set_deferred("disabled", true)
 	$hitbox/collision2.set_deferred("disabled", true)
@@ -71,4 +73,5 @@ func die() -> void:
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if is_dead and anim_name == "hurt":
+		Globals.score += enemy_score
 		queue_free()

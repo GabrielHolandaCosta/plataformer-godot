@@ -1,48 +1,43 @@
 extends CharacterBody2D
 
-const SPEED = 190.0
-const ACCELERATION = 900.0
+const SPEED = 120.0
+const ACCELERATION = 600.0
 const FRICTION = 1300.0
 const AIR_ACCELERATION = 700.0
 const AIR_FRICTION = 300.0
-const JUMP_VELOCITY = -360.0
+const JUMP_VELOCITY = -260.0
 const FALL_GRAVITY_MULTIPLIER = 1.35
 const LOW_JUMP_MULTIPLIER = 1.15
-const KNOCKBACK_RECOVERY = 1800.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
-var player_life := 10
-var knockback_vector := Vector2.ZERO
-var is_hurt := false
+var is_hurted := false
+
+signal player_has_died()
 
 @onready var animation := $anim as AnimatedSprite2D
 @onready var remote_transform := $remote as RemoteTransform2D
+@onready var ray_right := $ray_right
+@onready var ray_left := $ray_left
 
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		if velocity.y > 0:
 			velocity.y += gravity * FALL_GRAVITY_MULTIPLIER * delta
 		else:
 			velocity.y += gravity * delta
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_hurt:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_hurted:
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 
-	# Make small jumps feel better when the jump button is released early.
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 		velocity.y *= LOW_JUMP_MULTIPLIER
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 
-	if not is_hurt:
+	if not is_hurted:
 		if direction != 0:
 			if is_on_floor():
 				velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION * delta)
@@ -59,31 +54,31 @@ func _physics_process(delta):
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_FRICTION * delta)
 
-	# Apply knockback separately so it always works.
-	velocity += knockback_vector
-	knockback_vector = knockback_vector.move_toward(Vector2.ZERO, KNOCKBACK_RECOVERY * delta)
-
 	move_and_slide()
 
-	if is_on_floor():
-		is_jumping = false
-	else:
-		is_jumping = true
+	for platform in range(get_slide_collision_count()):
+		var collision = get_slide_collision(platform)
+		if collision.get_collider().has_method("has_collided_with"):
+			collision.get_collider().has_collided_with(collision, self)
+
+	is_jumping = not is_on_floor()
 
 	_update_animation_speed()
 	_update_animation()
 
 
 func _update_animation():
-	if is_hurt:
+	if is_hurted:
 		_play_animation("hurt")
 		return
 
 	if not is_on_floor():
-		if velocity.y < 0:
+		if velocity.y < -10:
 			_play_animation("jump")
-		else:
+		elif velocity.y > 10:
 			_play_animation("fall")
+		else:
+			_play_animation("jump")
 		return
 
 	if abs(velocity.x) > 10:
@@ -109,19 +104,18 @@ func _on_hurtbox_body_entered(body):
 	if not body.is_in_group("enemies"):
 		return
 
-	if player_life <= 0:
-		queue_free()
+	if is_hurted:
 		return
 
-	if $ray_right.is_colliding():
-		take_damage(Vector2(-45, -55))
-	elif $ray_left.is_colliding():
-		take_damage(Vector2(45, -55))
+	if ray_right.is_colliding():
+		take_damage(Vector2(-180, -220))
+	elif ray_left.is_colliding():
+		take_damage(Vector2(180, -220))
 	else:
 		if animation.flip_h:
-			take_damage(Vector2(45, -55))
+			take_damage(Vector2(180, -220))
 		else:
-			take_damage(Vector2(-45, -55))
+			take_damage(Vector2(-180, -220))
 
 
 func follow_camera(camera):
@@ -129,22 +123,43 @@ func follow_camera(camera):
 	remote_transform.remote_path = camera_path
 
 
-func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	player_life -= 1
-	is_hurt = true
-
-	if player_life <= 0:
-		queue_free()
+func take_damage(knockback_force := Vector2.ZERO):
+	if is_hurted:
 		return
 
-	if knockback_force != Vector2.ZERO:
-		knockback_vector = knockback_force
+	Globals.player_life -= 1
+	print("Vida do player: ", Globals.player_life)
 
-	var damage_tween := get_tree().create_tween()
-	damage_tween.parallel().tween_property(animation, "modulate", Color(1, 0.35, 0.35, 1), 0.08)
-	damage_tween.parallel().tween_property(self, "knockback_vector", Vector2.ZERO, duration)
+	if Globals.player_life > 0:
+		is_hurted = true
+		velocity = knockback_force
+		animation.modulate = Color(1, 0.35, 0.35, 1)
 
-	await damage_tween.finished
+		await get_tree().create_timer(0.3).timeout
 
-	animation.modulate = Color(1, 1, 1, 1)
-	is_hurt = false
+		animation.modulate = Color(1, 1, 1, 1)
+		is_hurted = false
+	else:
+		emit_signal("player_has_died")
+		queue_free()
+
+
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		if is_on_floor() and not is_hurted:
+			velocity.y = JUMP_VELOCITY
+			is_jumping = true
+
+
+func _on_head_collider_body_entered(body):
+	if body.has_method("break_sprite"):
+		body.hitpoints -= 1
+
+		if body.hitpoints <= 0:
+			body.break_sprite()
+		else:
+			if body.animation_player and body.animation_player.has_animation("hit_flash"):
+				body.animation_player.play("hit_flash")
+
+			if body.has_method("create_coin"):
+				body.create_coin()

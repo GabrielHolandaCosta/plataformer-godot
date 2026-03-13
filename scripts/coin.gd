@@ -43,6 +43,12 @@ func collect_coin() -> void:
 	collected = true
 	collision.set_deferred("disabled", true)
 
+	await $collision.call_deferred("queue_free")
+
+	var coins := 1
+	Globals.coins += coins
+	print(Globals.coins)
+
 	var tween := create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "scale", Vector2(1.25, 1.25), 0.08)
@@ -53,9 +59,4 @@ func collect_coin() -> void:
 		anim.play("collect")
 	else:
 		await tween.finished
-		queue_free()
-
-
-func _on_anim_animation_finished() -> void:
-	if collected and anim.animation == "collect":
 		queue_free()

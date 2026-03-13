@@ -1,6 +1,6 @@
 res://levels/world_01.tscn
-res://actors/player.tscn
-res://actors/enemy.tscn
-res://prefabs/moving_plataform.tscn
-res://actors/hitbox.tscn
+res://sigletons/globals.gd
+res://scripts/hud_manager.gd
 res://scripts/player.gd
+res://actors/player.tscn
+res://scripts/world_01.gd
