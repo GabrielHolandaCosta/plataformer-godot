@@ -74,10 +74,10 @@ git clone https://github.com/GabrielHolandaCosta/plataformer-godot
 
 ## 👥 Time
 
-- Gabriel Holanda
-- Pablo Cafe
+- Gabriel Holanda Costa
+- Pablo de Omena Café
 - Paulo Junior
-- Rafael
+- José Rafael Oliveira
 - Victor Milito
 
 GitHub: [@GabrielHolandaCosta](https://github.com/GabrielHolandaCosta)
