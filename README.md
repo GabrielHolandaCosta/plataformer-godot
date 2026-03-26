@@ -1,77 +1,90 @@
-🕹️ 2D Platformer – Godot
+# 🎮 Platform 2D (Godot 4)
 
-A 2D platformer game developed with Godot Engine.
-This project is used to learn and experiment with game development concepts such as player movement, enemy behavior, shaders, and level design.
+![Godot](https://img.shields.io/badge/Godot-4.x-478CBF?style=for-the-badge&logo=godot-engine&logoColor=white)
+![GDScript](https://img.shields.io/badge/GDScript-Game%20Logic-355570?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange?style=for-the-badge)
 
-The project is also developed collaboratively, using GitHub for version control.
+Um jogo de plataforma 2D feito no **Godot 4**, com foco em aprendizado prático de game dev: movimentacao, combate, checkpoints, UI/HUD, transicoes de fase e design de nivel.
 
-🎮 Current Features
+---
 
-Smooth player movement
+## ✨ Visao geral
 
-Jump system with air control
+Neste projeto, o player percorre fases com obstaculos, inimigos e colecionaveis.  
+O objetivo e avancar entre mundos, sobreviver aos perigos e acumular pontuacao.
 
-Knockback when taking damage
+---
 
-Player health system
+## 🕹️ Funcionalidades atuais
 
-Basic enemies
+- **Movimento fluido do personagem** com corrida, pulo e controle no ar
+- **Sistema de dano e knockback** ao colidir com inimigos/perigos
+- **Sistema de vidas** com respawn do jogador
+- **Checkpoints funcionais** para retorno durante a fase
+- **Inimigos de patrulha** e perigos como espinhos
+- **Plataformas moveis e que caem**
+- **Coleta de moedas e sistema de score**
+- **HUD completo** (vidas, moedas, score e cronometro)
+- **Sistema de dialogo**
+- **Pausa de jogo** (menu de pause)
+- **Transicao entre cenas/fases** com efeito visual
+- **Shader de nuvens/background** para dar vida ao cenario
 
-Moving platforms
+---
 
-Coin collection
+## 🎛️ Controles
 
-Parallax background
+> Os controles podem variar conforme o mapeamento no Godot, mas o padrao atual e:
 
-Cloud movement shader
+- `← / →` : mover personagem
+- `Espaco` (`ui_accept`) : pular
+- `E` (`interact` / `advance_message`) : interagir e avancar dialogo
+- `Esc` (`ui_cancel`) : abrir menu de pausa
 
-🛠️ Technologies Used
+---
 
-Godot Engine
+## 🧱 Estrutura do projeto
 
-GDScript
+```txt
+actors/      # player, inimigos e elementos relacionados
+assets/      # sprites, tilesets, backgrounds e recursos visuais
+levels/      # fases (world_01, world_02, ...)
+prefabs/     # cenas reutilizaveis (checkpoint, plataformas, goal, etc.)
+scripts/     # logica principal em GDScript
+shaders/     # shaders do projeto
+sigletons/   # autoloads globais (Globals, DialogManager)
+```
 
-Git & GitHub for version control
+---
 
-📂 Project Structure
-actors/        → characters and enemies
-assets/        → sprites, tilesets, and images
-levels/        → game levels
-prefabs/       → reusable objects
-scripts/       → main scripts
-shaders/       → shaders used in the game
+## 🚀 Como executar
 
-🚀 How to Run the Project
+1. Instale o **Godot 4.x**  
+2. Clone o repositorio:
 
-Install Godot Engine
-
-Clone the repository:
-
+```bash
 git clone https://github.com/GabrielHolandaCosta/plataformer-godot
+```
 
-Open Godot
+3. Abra o Godot e clique em **Import**
+4. Selecione a pasta do projeto
+5. Rode a cena principal pelo editor
 
-Click Import
+---
 
-Select the project folder
+## 👥 Time
 
-Run the main scene
+- Gabriel Holanda
+- Pablo Cafe
+- Paulo Junior
+- Rafael
+- Victor Milito
 
-Example:
+GitHub: [@GabrielHolandaCosta](https://github.com/GabrielHolandaCosta)
 
-Developer 1 → Player mechanics
+---
 
-Developer 2 → Enemies and level design
+## 📌 Status do projeto
 
-📌 Project Status
-
-🚧 Work in progress
-
-This project is currently under development and used for learning and experimentation.
-
-👨‍💻 Author
-
-Gabriel Holanda, Pablo Café, Paulo Júnior, Rafael, Victor Milito
-
-GitHub:
-https://github.com/GabrielHolandaCosta
+🚧 **Em desenvolvimento**  
+Projeto em evolucao continua para estudo, experimentacao e melhoria de arquitetura/gameplay.
