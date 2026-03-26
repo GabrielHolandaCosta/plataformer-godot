@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnsd873ek705g"]
+
+[ext_resource type="Script" path="res://scripts/chery.gd" id="1_qvqt2"]
+[ext_resource type="Texture2D" uid="uid://b55tjpughlqbw" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hopping (16 x 32).png" id="1_v5o52"]
+[ext_resource type="Texture2D" uid="uid://bj022tlximyah" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hurt (16 x 32).png" id="2_v23t2"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="3_ply1s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yg70"]
+size = Vector2(12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luxul"]
+atlas = ExtResource("1_v5o52")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6hdu"]
+atlas = ExtResource("1_v5o52")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei4xi"]
+atlas = ExtResource("2_v23t2")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2fw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luxul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6hdu")
+}],
+"loop": true,
+"name": &"hopping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei4xi")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkyc1"]
+size = Vector2(11, 3)
+
+[node name="chery" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_qvqt2")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_6yg70")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_r2fw2")
+animation = &"hurt"
+autoplay = "hopping"
+frame_progress = 1.0
+
+[node name="hitbox" parent="." instance=ExtResource("3_ply1s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+visible = false
+position = Vector2(0.5, -11.5)
+shape = SubResource("RectangleShape2D_vkyc1")
+debug_color = Color(0.960784, 0, 0, 0.419608)
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c43v3jr3l3y5q"]
+
+[ext_resource type="Script" path="res://scripts/goal.gd" id="1_x408g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odg7q"]
+
+[node name="goal" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_x408g")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_odg7q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://drw48it85tnt5"]
+
+[ext_resource type="Script" path="res://scripts/rocket_cherry.gd" id="1_vhmjv"]
+[ext_resource type="Texture2D" uid="uid://cfd023u5j1wl3" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Flying (16 x 32).png" id="2_j4hqw"]
+[ext_resource type="Texture2D" uid="uid://cayarggtc6x13" path="res://assets/Sprite Pack 2/7 - Rocket Cherry/Hurt_Falling (16 x 32).png" id="3_vclm6"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="4_t6wml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldifv"]
+atlas = ExtResource("2_j4hqw")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luis8"]
+atlas = ExtResource("2_j4hqw")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc3h4"]
+atlas = ExtResource("3_vclm6")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unfnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldifv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luis8")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc3h4")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0m7m"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v31na"]
+size = Vector2(11, 3)
+
+[sub_resource type="Curve2D" id="Curve2D_lt0gj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -102)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_hdhba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("path_2D/path_follow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_230c0"]
+resource_name = "patrol"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("path_2D/path_follow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66y2q"]
+_data = {
+"RESET": SubResource("Animation_hdhba"),
+"patrol": SubResource("Animation_230c0")
+}
+
+[node name="base_patrol" type="Node2D"]
+
+[node name="rocket_cherry" type="CharacterBody2D" parent="." groups=["enemies"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_vhmjv")
+
+[node name="anim" type="AnimatedSprite2D" parent="rocket_cherry"]
+sprite_frames = SubResource("SpriteFrames_unfnt")
+animation = &"flying"
+autoplay = "flying"
+
+[node name="collision" type="CollisionShape2D" parent="rocket_cherry"]
+visible = false
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_e0m7m")
+
+[node name="hitbox" parent="rocket_cherry" instance=ExtResource("4_t6wml")]
+
+[node name="collision" type="CollisionShape2D" parent="rocket_cherry/hitbox"]
+visible = false
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_v31na")
+debug_color = Color(0.952941, 0, 0, 0.419608)
+
+[node name="path_2D" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_lt0gj")
+
+[node name="path_follow2D" type="PathFollow2D" parent="path_2D"]
+rotates = false
+
+[node name="remote" type="RemoteTransform2D" parent="path_2D/path_follow2D"]
+remote_path = NodePath("../../../rocket_cherry")
+
+[node name="spawn_enemy" type="Marker2D" parent="."]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "patrol"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_66y2q")
+}
+
+[connection signal="animation_finished" from="rocket_cherry/anim" to="rocket_cherry" method="_on_anim_animation_finished"]
