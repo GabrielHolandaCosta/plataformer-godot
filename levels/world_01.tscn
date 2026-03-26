@@ -409,7 +409,7 @@ position = Vector2(680, 139)
 position = Vector2(680, 108)
 
 [node name="player" parent="." instance=ExtResource("3_qgbbx")]
-position = Vector2(712, 197)
+position = Vector2(26, 219)
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(0, -40)
@@ -587,7 +587,7 @@ region_enabled = true
 region_rect = Rect2(0, 8, 96, 8)
 
 [node name="checkpoints" type="Node2D" parent="."]
-position = Vector2(-48, -159)
+position = Vector2(-46, -161)
 
 [node name="checkpoint" parent="checkpoints" instance=ExtResource("36_t5lxt")]
 position = Vector2(110, 223)

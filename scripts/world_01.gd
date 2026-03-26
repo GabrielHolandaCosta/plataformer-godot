@@ -9,6 +9,8 @@ extends Node2D
 
 func _ready():
 	Globals.player = player
+	Globals.spawn_position = player.global_position
+	Globals.current_checkpoint = null
 	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(reload_game)
 	control.time_is_up.connect(reload_game)

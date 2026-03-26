@@ -1,13 +1,13 @@
 2a60927148abd1d33b818b535e306557
-::res://::1774550869
+::res://::1774551461
 icon.svg::CompressedTexture2D::5738141639269549034::1773418243::1773418243::1::::<><>::
 README.md::TextFile::-1::1773418243::0::1::::<><>::
-::res://actors/::1774550813
+::res://actors/::1774550875
 base_patrol.tscn::PackedScene::8399708878582564400::1774537289::0::1::::<><>::res://scripts/rocket_cherry.gd<>uid://cfd023u5j1wl3<>uid://cayarggtc6x13<>uid://c0qa25tr7hyr3
 chery.tscn::PackedScene::8109118624322082054::1774537289::0::1::::<><>::res://scripts/chery.gd<>uid://b55tjpughlqbw<>uid://bj022tlximyah<>uid://c0qa25tr7hyr3
-enemy.tscn::PackedScene::5795983208391058123::1774550813::0::1::::<><>::uid://djj6jca2dmhg0<>res://scripts/ground_enemy.gd<>uid://c1dvjgxgc4wo3<>uid://c3knsp14hjsrx<>uid://c0qa25tr7hyr3
+enemy.tscn::PackedScene::5795983208391058123::1774550875::0::1::::<><>::uid://djj6jca2dmhg0<>res://scripts/ground_enemy.gd<>uid://c1dvjgxgc4wo3<>uid://c3knsp14hjsrx<>uid://c0qa25tr7hyr3
 hitbox.tscn::PackedScene::6560642324704656982::1773418243::0::1::::<><>::res://scripts/hitbox.gd
-player.tscn::PackedScene::840749613821910337::1774550813::0::1::::<><>::res://scripts/player.gd<>uid://bm16xfw4bd7av<>uid://dlr3usrodo86n<>uid://bmr8mnnpid1cd<>uid://b5pwlh62n6uqe
+player.tscn::PackedScene::840749613821910337::1774550875::0::1::::<><>::res://scripts/player.gd<>uid://bm16xfw4bd7av<>uid://dlr3usrodo86n<>uid://bmr8mnnpid1cd<>uid://b5pwlh62n6uqe
 ::res://assets/::1774550693
 ::res://assets/cave/::1774550727
 background-1.png::CompressedTexture2D::4376091381718612228::1767463084::1774550727::1::::<><>::
@@ -172,10 +172,10 @@ Claw_Animations (16 x 16).png::CompressedTexture2D::8102026666880928915::1773418
 Hurt (32 x 32).png::CompressedTexture2D::1024665624600563026::1773418243::1773418243::1::::<><>::
 Movement_(Flip_image_back_and_forth) (32 x 32).png::CompressedTexture2D::1556160789681767268::1773418243::1773418243::1::::<><>::
 Reaching_to_Pinch (32 x 32).png::CompressedTexture2D::1345638052642578363::1773418243::1773418243::1::::<><>::
-::res://levels/::1774550813
-world_01.tscn::PackedScene::2712326792951307602::1774550813::0::1::::<><>::res://scripts/world_01.gd<>uid://c71aj0or4vyjo<>uid://dchhu750187kn<>uid://jix7t6x3byw2<>uid://b8v604h1alnc7<>uid://b4k3koq72mrxh<>uid://l8ja16708dgr<>uid://bhrjqeti82po<>uid://vauxj87fxp25<>uid://cwwumf2pbu3js<>res://shaders/movement_clouds.gdshader<>uid://bk67yvrguqfuk<>uid://vmymc0mfcpm<>uid://bijq3ici1eifk<>uid://cotu85d433lp8<>uid://bmj7yrvtfv0jt<>uid://cmgf35v0om6ka<>uid://1ypfdjbp8shw<>uid://d08iqwdjovxrh<>uid://b7x73eijx021k<>uid://bol0j8msr15gd<>uid://muv4egfo8k1h<>uid://hkqdoagpmiqj<>res://scripts/warning_sign.gd<>uid://566ifnuhjf5i<>res://scripts/spikes-area.gd<>uid://c43v3jr3l3y5q<>res://shaders/transition.gdshader<>uid://dpse6j0b2y3ww<>res://scripts/transition.gd<>res://scripts/color_rect.gd<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://drw48it85tnt5<>uid://rovwp6truy0s<>uid://dldkj1xwpovl
-world_02.tscn::PackedScene::5679909575270884539::1774550813::0::1::::<><>::uid://bnxbayhxor46j<>uid://l8ja16708dgr<>uid://38mdj0rlydc8<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://c43v3jr3l3y5q
-::res://prefabs/::1774550813
+::res://levels/::1774551420
+world_01.tscn::PackedScene::2712326792951307602::1774551420::0::1::::<><>::res://scripts/world_01.gd<>uid://c71aj0or4vyjo<>uid://dchhu750187kn<>uid://jix7t6x3byw2<>uid://b8v604h1alnc7<>uid://b4k3koq72mrxh<>uid://l8ja16708dgr<>uid://bhrjqeti82po<>uid://vauxj87fxp25<>uid://cwwumf2pbu3js<>res://shaders/movement_clouds.gdshader<>uid://bk67yvrguqfuk<>uid://vmymc0mfcpm<>uid://bijq3ici1eifk<>uid://cotu85d433lp8<>uid://bmj7yrvtfv0jt<>uid://cmgf35v0om6ka<>uid://1ypfdjbp8shw<>uid://d08iqwdjovxrh<>uid://b7x73eijx021k<>uid://bol0j8msr15gd<>uid://muv4egfo8k1h<>uid://hkqdoagpmiqj<>res://scripts/warning_sign.gd<>uid://566ifnuhjf5i<>res://scripts/spikes-area.gd<>uid://c43v3jr3l3y5q<>res://shaders/transition.gdshader<>uid://dpse6j0b2y3ww<>res://scripts/transition.gd<>res://scripts/color_rect.gd<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://drw48it85tnt5<>uid://rovwp6truy0s<>uid://dldkj1xwpovl
+world_02.tscn::PackedScene::5679909575270884539::1774550875::0::1::::<><>::uid://bnxbayhxor46j<>uid://l8ja16708dgr<>uid://38mdj0rlydc8<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://c43v3jr3l3y5q
+::res://prefabs/::1774550875
 box_pieces.tscn::PackedScene::7129014170869845360::1773418243::0::1::::<><>::res://scripts/box_pieces.gd
 break_box.tscn::PackedScene::884880743218344235::1773418243::0::1::::<><>::res://scripts/break_box.gd<>uid://bwkbbicv6jeok
 checkpoint.tscn::PackedScene::1223426811343385364::1774537289::0::1::::<><>::res://scripts/checkpoint.gd<>uid://ctljx7hua3ce5
@@ -183,7 +183,7 @@ coin.tscn::PackedScene::4444259622007427305::1773418243::0::1::::<><>::res://scr
 coin_rigid.tscn::PackedScene::7978873629504919892::1773418243::0::1::::<><>::uid://b4k3koq72mrxh
 dialog_box.tscn::PackedScene::974814735717730607::1773418243::0::1::::<><>::res://scripts/dialog_box.gd<>uid://ctid0eg7ul81k<>uid://o52k2nui2ji
 falling_platform.tscn::PackedScene::512943247892843609::1773418243::0::1::::<><>::res://scripts/falling_platform.gd<>uid://8m0qrtqxt506
-goal.tscn::PackedScene::6867445969340095036::1774550813::0::1::::<><>::res://scripts/goal.gd
+goal.tscn::PackedScene::6867445969340095036::1774550875::0::1::::<><>::res://scripts/goal.gd
 moving_plataform.tscn::PackedScene::4747932863379361392::1773418243::0::1::::<><>::uid://bwkbbicv6jeok<>res://scripts/moving_plataform.gd
 pause_menu.tscn::PackedScene::233475209076189765::1774538478::0::1::::<><>::res://scripts/pause_menu.gd<>uid://cxscmquv0knko
 ::res://screens/::1774538039
@@ -210,10 +210,10 @@ spikes-area.gd::GDScript::-1::1774537303::0::1::::<>Area2D<>::
 texture.gd::GDScript::-1::1774537303::0::1::::<>Sprite2D<>::
 transition.gd::GDScript::-1::1774542645::0::1::::<>CanvasLayer<>::
 warning_sign.gd::GDScript::-1::1774537303::0::1::::<>Node2D<>::
-world_01.gd::GDScript::-1::1774549334::0::1::::<>Node2D<>::
+world_01.gd::GDScript::-1::1774551448::0::1::::<>Node2D<>::
 ::res://shaders/::1774542303
 movement_clouds.gdshader::Shader::-1::1773418243::0::1::::<><>::
 transition.gdshader::Shader::-1::1774542303::0::1::::<><>::
 ::res://sigletons/::1774549334
 dialog_manager.gd::GDScript::-1::1774537302::0::1::::<>Node<>::
-globals.gd::GDScript::-1::1774549334::0::1::::<>Node<>::
+globals.gd::GDScript::-1::1774551445::0::1::::<>Node<>::
