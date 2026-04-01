@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://l8ja16708dgr"]
+[gd_scene load_steps=17 format=3 uid="uid://l8ja16708dgr"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2ikyh"]
 [ext_resource type="Texture2D" uid="uid://bm16xfw4bd7av" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="2_m2otd"]
 [ext_resource type="Texture2D" uid="uid://dlr3usrodo86n" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png" id="2_pw1xp"]
 [ext_resource type="Texture2D" uid="uid://bmr8mnnpid1cd" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Jumping (32 x 32).png" id="3_n2frn"]
 [ext_resource type="Texture2D" uid="uid://b5pwlh62n6uqe" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Running (32 x 32).png" id="4_6exnm"]
+[ext_resource type="AudioStream" uid="uid://bco3tjel55wnu" path="res://sounds/jump_sfx.wav" id="6_f8yed"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxo6i"]
 atlas = ExtResource("2_m2otd")
@@ -105,7 +106,7 @@ shape = SubResource("RectangleShape2D_gnn41")
 [node name="hurtbox" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 4
+collision_mask = 132
 
 [node name="collission" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(0, -9)
@@ -118,6 +119,7 @@ debug_color = Color(0.94902, 0, 0, 0.419608)
 visible = false
 position = Vector2(8, 0)
 target_position = Vector2(4, 0)
+collision_mask = 4
 
 [node name="ray_left" type="RayCast2D" parent="."]
 visible = false
@@ -134,6 +136,10 @@ collision_mask = 64
 visible = false
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_8gp7t")
+
+[node name="jump_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_f8yed")
+volume_db = -30.0
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

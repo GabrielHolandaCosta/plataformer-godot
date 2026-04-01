@@ -1,0 +1,5 @@
+res://levels/world_01.tscn
+res://actors/trex.tscn
+res://actors/enemy.tscn
+res://actors/base_patrol.tscn
+res://actors/player.tscn

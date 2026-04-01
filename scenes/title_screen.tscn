@@ -1,0 +1,189 @@
+[gd_scene load_steps=11 format=3 uid="uid://cejsfr1coi15x"]
+
+[ext_resource type="Texture2D" uid="uid://bhvjqifxtemtw" path="res://assets/Mini FX, Items & UI/Mini UI/title-screen.jpg" id="1_cnonn"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_n2etc"]
+[ext_resource type="Texture2D" uid="uid://c26y0tsgcoklh" path="res://assets/Mini FX, Items & UI/Mini UI/game_logo.png" id="2_0bw6x"]
+[ext_resource type="Theme" uid="uid://pv6y7j7iong8" path="res://default_btn.tres" id="3_mbkts"]
+[ext_resource type="Texture2D" uid="uid://bmr8mnnpid1cd" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Jumping (32 x 32).png" id="3_nmbnn"]
+[ext_resource type="AudioStream" uid="uid://bqstd338csnuu" path="res://sounds/bg_music.wav" id="6_bvmst"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8ujb"]
+
+[sub_resource type="Animation" id="Animation_kyhmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/mochi:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sqib2"]
+resource_name = "reveal"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(0.196146, 1),
+"update": 0,
+"values": [Vector2(-350, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/mochi:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfex1"]
+_data = {
+"RESET": SubResource("Animation_kyhmi"),
+"reveal": SubResource("Animation_sqib2")
+}
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n2etc")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 320.0
+texture = ExtResource("1_cnonn")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3840.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.5
+offset_right = 50.5
+offset_bottom = 105.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="game_logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_0bw6x")
+
+[node name="start_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_mbkts")
+text = "START"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_k8ujb")
+
+[node name="credits_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_mbkts")
+text = "CREDITS"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_k8ujb")
+
+[node name="quit_btn" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_mbkts")
+text = "QUIT GAME"
+
+[node name="mochi" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_nmbnn")
+expand_mode = 2
+flip_h = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "reveal"
+libraries = {
+"": SubResource("AnimationLibrary_dfex1")
+}
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bvmst")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]

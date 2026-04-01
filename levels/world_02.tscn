@@ -2001,7 +2001,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_juj2l")
 sources/1 = SubResource("TileSetAtlasSource_qasef")
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_ln2xq"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0h0uc"]
 frames = 4
 speed_scale = 3.0
 frame_0/texture = ExtResource("5_d2jnw")
@@ -2050,10 +2050,20 @@ layer_4/z_index = 0
 layer_4/tile_data = PackedInt32Array(-720881, 1114112, 6, 393228, 524288, 3, -65535, 131072, 19, -65520, 0, 21, 393225, 0, 21, 393234, 0, 21, -851952, 65536, 21, -851951, 0, 21, -851953, 196608, 21, -851949, 720896, 6, -851948, 655360, 7, -917474, 655360, 6, -65524, 524288, 3, -65525, 655360, 4, -65502, 589824, 3, -65508, 65536, 21, -65498, 65536, 21, 393247, 720896, 3, 393248, 786432, 4, -65495, 786432, 4, -65507, 786432, 4, -917464, 720896, 9, -589784, 786432, 4, -589783, 786432, 4, -983026, 786432, 4, -983027, 720896, 3, -393186, 720896, 9, -720877, 458752, 6, -65519, 196608, 21, 393246, 458752, 21, 393245, 393216, 21)
 
 [node name="player" parent="." instance=ExtResource("2_hy6a4")]
-position = Vector2(0, -15)
+position = Vector2(40, 0)
 collision_mask = 95
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="camera" type="Camera2D" parent="player"]
+position = Vector2(-40, -40)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.3
+drag_right_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -2091,15 +2101,15 @@ size_flags_vertical = 0
 [node name="coins_icon" type="TextureRect" parent="HUD/control/container/coins_container"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_ln2xq")
+texture = SubResource("AnimatedTexture_0h0uc")
+expand_mode = 2
 
 [node name="coins_counter" type="Label" parent="HUD/control/container/coins_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "0000"
 vertical_alignment = 1
 
@@ -2111,18 +2121,18 @@ size_flags_vertical = 0
 [node name="timer_label" type="Label" parent="HUD/control/container/timer_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "TIME:"
 vertical_alignment = 1
 
 [node name="timer_counter" type="Label" parent="HUD/control/container/timer_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "00:00"
 vertical_alignment = 1
 
@@ -2134,18 +2144,18 @@ size_flags_vertical = 0
 [node name="score_label" type="Label" parent="HUD/control/container/score_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "SCORE:"
 vertical_alignment = 1
 
 [node name="score_counter" type="Label" parent="HUD/control/container/score_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "000000"
 vertical_alignment = 1
 
@@ -2157,29 +2167,29 @@ size_flags_vertical = 8
 [node name="life_icon" type="TextureRect" parent="HUD/control/container/life_container"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
 texture = ExtResource("10_x7s0q")
+expand_mode = 2
 
 [node name="life_separator" type="Label" parent="HUD/control/container/life_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "X"
 vertical_alignment = 1
 
 [node name="life_counter" type="Label" parent="HUD/control/container/life_container"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_elvo3")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "03"
 vertical_alignment = 1
 
 [node name="goal" parent="." instance=ExtResource("11_2e8q2")]
-position = Vector2(-83, -14)
+position = Vector2(8, -8)
 next_level = "res://levels/world_01.tscn"
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

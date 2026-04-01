@@ -5,6 +5,7 @@ const COIN_SCENE: PackedScene = preload("res://prefabs/coin_rigid.tscn")
 
 @onready var animation_player: AnimationPlayer = $anim
 @onready var spawn_coin: Marker2D = $spawn_coin
+@onready var hitbox_sfx = $hitbox_sfx as AudioStreamPlayer
 
 @export var pieces: PackedStringArray
 @export var hitpoints: int = 1
@@ -13,9 +14,9 @@ const COIN_SCENE: PackedScene = preload("res://prefabs/coin_rigid.tscn")
 @export var vertical_impulse_max: int = -200
 @export var drop_coin: bool = true
 @export_range(0.0, 1.0) var coin_drop_chance: float = 1.0
-@export var coin_impulse_x_min: int = -50
-@export var coin_impulse_x_max: int = 50
-@export var coin_impulse_y: int = -150
+@export var coin_impulse_x_min: int = -22
+@export var coin_impulse_x_max: int = 22
+@export var coin_impulse_y: int = -72
 
 var is_broken: bool = false
 
@@ -23,6 +24,9 @@ var is_broken: bool = false
 func take_hit(damage: int = 1) -> void:
 	if is_broken:
 		return
+
+	if hitbox_sfx:
+		hitbox_sfx.play()
 
 	hitpoints -= damage
 
@@ -93,17 +97,14 @@ func create_coin() -> void:
 	if spawn_coin == null:
 		return
 
-	var coin := COIN_SCENE.instantiate()
-	get_parent().call_deferred("add_child", coin)
+	var coin := COIN_SCENE.instantiate() as RigidBody2D
+	coin.hurt_style_drop = false
+	coin.manual_impulse = Vector2(
+		float(randi_range(coin_impulse_x_min, coin_impulse_x_max)),
+		float(coin_impulse_y)
+	)
 	coin.global_position = spawn_coin.global_position
-
-	if coin.has_method("apply_impulse"):
-		coin.apply_impulse(
-			Vector2(
-				randi_range(coin_impulse_x_min, coin_impulse_x_max),
-				coin_impulse_y
-			)
-		)
+	get_parent().call_deferred("add_child", coin)
 
 
 func _disable_collision() -> void:

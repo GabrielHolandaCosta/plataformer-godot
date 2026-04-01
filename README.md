@@ -74,10 +74,17 @@ git clone https://github.com/GabrielHolandaCosta/plataformer-godot
 
 ## 👥 Time
 
+<<<<<<< HEAD
 - Gabriel Holanda Costa
 - Pablo de Omena Café
 - Paulo Junior
 - José Rafael Oliveira
+=======
+- Gabriel Holanda
+- Pablo Cafe
+- Paulo Junior
+- Rafael
+>>>>>>> da5e366 (jump, enemies, hud's, game over, screens)
 - Victor Milito
 
 GitHub: [@GabrielHolandaCosta](https://github.com/GabrielHolandaCosta)

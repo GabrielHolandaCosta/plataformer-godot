@@ -3,6 +3,7 @@ extends Area2D
 @export var bob_height: float = 4.0
 @export var bob_speed: float = 3.0
 @export var rotate_speed: float = 1.5
+@onready var coin_sfx = $coin_sfx as AudioStreamPlayer
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var collision: CollisionShape2D = $collision
@@ -33,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	
 	# pode deixar assim por enquanto
-	if body.name != "player":
+	if not body.is_in_group("player"):
 		return
 	
 	collect_coin()
@@ -56,6 +57,7 @@ func collect_coin() -> void:
 	tween.tween_property(self, "position:y", position.y - 10.0, 0.18)
 
 	if anim.sprite_frames.has_animation("collect"):
+		coin_sfx.play()
 		anim.play("collect")
 	else:
 		await tween.finished

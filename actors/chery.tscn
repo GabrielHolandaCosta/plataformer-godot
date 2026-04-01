@@ -58,9 +58,21 @@ shape = SubResource("RectangleShape2D_6yg70")
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r2fw2")
-animation = &"hurt"
+animation = &"hopping"
 autoplay = "hopping"
-frame_progress = 1.0
+frame_progress = 0.0
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+target_position = Vector2(-7, 0)
+collision_mask = 6
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+target_position = Vector2(0, 14)
+collision_mask = 2
 
 [node name="hitbox" parent="." instance=ExtResource("3_ply1s")]
 

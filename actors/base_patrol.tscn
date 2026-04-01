@@ -89,6 +89,7 @@ _data = {
 }
 
 [node name="base_patrol" type="Node2D"]
+position = Vector2(0, -8)
 
 [node name="rocket_cherry" type="CharacterBody2D" parent="." groups=["enemies"]]
 collision_layer = 4
@@ -106,6 +107,7 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_e0m7m")
 
 [node name="hitbox" parent="rocket_cherry" instance=ExtResource("4_t6wml")]
+visible = false
 
 [node name="collision" type="CollisionShape2D" parent="rocket_cherry/hitbox"]
 visible = false
@@ -118,12 +120,15 @@ visible = false
 curve = SubResource("Curve2D_lt0gj")
 
 [node name="path_follow2D" type="PathFollow2D" parent="path_2D"]
+visible = false
 rotates = false
 
 [node name="remote" type="RemoteTransform2D" parent="path_2D/path_follow2D"]
+visible = false
 remote_path = NodePath("../../../rocket_cherry")
 
 [node name="spawn_enemy" type="Marker2D" parent="."]
+visible = false
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "patrol"

@@ -6,8 +6,11 @@ class_name EnemyBase
 @export var gravity_multiplier: float = 1.0
 @export var start_direction: int = -1
 @export var enemy_score := 100
+@export var ledge_ray_forward: float = 6.0
+@export var ledge_ray_depth: float = 14.0
 
 var wall_detector: RayCast2D
+var ground_detector: RayCast2D
 var texture: Sprite2D
 @onready var anim: Node = $anim
 @onready var collision: CollisionShape2D = $collision
@@ -28,6 +31,7 @@ func _ready() -> void:
 	if direction == 0:
 		direction = -1
 	wall_detector = get_node_or_null("wall_detector") as RayCast2D
+	ground_detector = get_node_or_null("ground_detector") as RayCast2D
 	texture = get_node_or_null("texture") as Sprite2D
 	_update_visual_direction()
 
@@ -38,12 +42,23 @@ func _apply_gravity(delta: float) -> void:
 
 
 func flip_direction() -> void:
-	if not wall_detector:
+	var should_flip := false
+	if wall_detector and wall_detector.is_colliding():
+		should_flip = true
+	if not should_flip and is_on_wall():
+		should_flip = true
+	if not should_flip and ground_detector and is_on_floor():
+		ground_detector.position.x = ledge_ray_forward * float(direction)
+		ground_detector.target_position = Vector2(0, ledge_ray_depth)
+		ground_detector.force_raycast_update()
+		if not ground_detector.is_colliding():
+			should_flip = true
+	if not should_flip:
 		return
-	if wall_detector.is_colliding():
-		direction *= -1
+	direction *= -1
+	if wall_detector:
 		wall_detector.scale.x *= -1
-		_update_visual_direction()
+	_update_visual_direction()
 
 
 func movement(delta: float) -> void:
@@ -58,6 +73,8 @@ func _update_visual_direction() -> void:
 			texture.flip_h = true
 		else:
 			texture.flip_h = false
+	elif anim is AnimatedSprite2D:
+		(anim as AnimatedSprite2D).flip_h = direction == 1
 
 
 func _disable_hitbox_collision() -> void:
