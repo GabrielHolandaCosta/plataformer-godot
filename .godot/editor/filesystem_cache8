@@ -1,15 +1,15 @@
 2a60927148abd1d33b818b535e306557
-::res://::1775060909
+::res://::1775061930
 default_btn.tres::Theme::1098111369350853073::1775000629::0::1::::<><>::uid://o52k2nui2ji
 icon.svg::CompressedTexture2D::5738141639269549034::1773418243::1775057138::1::::<><>::
 README.md::TextFile::-1::1775000629::0::1::::<><>::
-::res://actors/::1775060748
-base_patrol.tscn::PackedScene::8399708878582564400::1775060748::0::1::::<><>::res://scripts/rocket_cherry.gd<>uid://cfd023u5j1wl3<>uid://cayarggtc6x13<>uid://c0qa25tr7hyr3
+::res://actors/::1775061312
+base_patrol.tscn::PackedScene::8399708878582564400::1775061312::0::1::::<><>::res://scripts/rocket_cherry.gd<>uid://cfd023u5j1wl3<>uid://cayarggtc6x13<>uid://c0qa25tr7hyr3
 chery.tscn::PackedScene::8109118624322082054::1775058562::0::1::::<><>::res://scripts/chery.gd<>uid://b55tjpughlqbw<>uid://bj022tlximyah<>uid://c0qa25tr7hyr3
-enemy.tscn::PackedScene::5795983208391058123::1775060748::0::1::::<><>::uid://djj6jca2dmhg0<>res://scripts/ground_enemy.gd<>uid://c1dvjgxgc4wo3<>uid://c3knsp14hjsrx<>uid://c0qa25tr7hyr3
+enemy.tscn::PackedScene::5795983208391058123::1775061312::0::1::::<><>::uid://djj6jca2dmhg0<>res://scripts/ground_enemy.gd<>uid://c1dvjgxgc4wo3<>uid://c3knsp14hjsrx<>uid://c0qa25tr7hyr3
 hitbox.tscn::PackedScene::6560642324704656982::1775059828::0::1::::<><>::res://scripts/hitbox.gd
-player.tscn::PackedScene::840749613821910337::1775060533::0::1::::<><>::res://scripts/player.gd<>uid://bm16xfw4bd7av<>uid://dlr3usrodo86n<>uid://bmr8mnnpid1cd<>uid://b5pwlh62n6uqe<>uid://bco3tjel55wnu
-trex.tscn::PackedScene::1141611449338819763::1775060748::0::1::::<><>::uid://cs37wte3d5qp8<>res://scripts/trex.gd<>uid://bam1bn3c613fu<>uid://dt43ciev4rc2p<>uid://c0qa25tr7hyr3
+player.tscn::PackedScene::840749613821910337::1775061312::0::1::::<><>::res://scripts/player.gd<>uid://bm16xfw4bd7av<>uid://dlr3usrodo86n<>uid://bmr8mnnpid1cd<>uid://b5pwlh62n6uqe<>uid://bco3tjel55wnu
+trex.tscn::PackedScene::1141611449338819763::1775061312::0::1::::<><>::uid://cs37wte3d5qp8<>res://scripts/trex.gd<>uid://bam1bn3c613fu<>uid://dt43ciev4rc2p<>uid://c0qa25tr7hyr3
 ::res://assets/::1775000629
 ::res://assets/cave/::1775057138
 background-1.png::CompressedTexture2D::4376091381718612228::1767463084::1775057138::1::::<><>::
@@ -290,8 +290,8 @@ Jump (32 x 32).png::CompressedTexture2D::3320412025061845209::1775000629::177500
 Landing (32 x 32).png::CompressedTexture2D::1503038751430040599::1775000629::1775000629::1::::<><>::
 Running (32 x 32).png::CompressedTexture2D::5298808525939793091::1775000629::1775000629::1::::<><>::
 Victory_Pose (32 x 32).png::CompressedTexture2D::4090336803599151570::1775000629::1775000629::1::::<><>::
-::res://levels/::1775060748
-world_01.tscn::PackedScene::2712326792951307602::1775060748::0::1::::<><>::res://scripts/world_01.gd<>uid://c71aj0or4vyjo<>uid://dchhu750187kn<>uid://jix7t6x3byw2<>uid://b8v604h1alnc7<>uid://b4k3koq72mrxh<>uid://l8ja16708dgr<>uid://bhrjqeti82po<>uid://vauxj87fxp25<>uid://cwwumf2pbu3js<>res://shaders/movement_clouds.gdshader<>uid://bk67yvrguqfuk<>uid://vmymc0mfcpm<>uid://bijq3ici1eifk<>uid://cotu85d433lp8<>uid://bmj7yrvtfv0jt<>uid://cmgf35v0om6ka<>uid://1ypfdjbp8shw<>uid://qjaf55hiv8e6<>uid://d08iqwdjovxrh<>uid://b7x73eijx021k<>uid://bol0j8msr15gd<>uid://muv4egfo8k1h<>uid://hkqdoagpmiqj<>res://scripts/warning_sign.gd<>uid://566ifnuhjf5i<>res://scripts/spikes-area.gd<>uid://c43v3jr3l3y5q<>res://shaders/transition.gdshader<>uid://dpse6j0b2y3ww<>res://scripts/transition.gd<>res://scripts/color_rect.gd<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://drw48it85tnt5<>uid://rovwp6truy0s<>uid://dldkj1xwpovl<>uid://bqstd338csnuu
+::res://levels/::1775061312
+world_01.tscn::PackedScene::2712326792951307602::1775061312::0::1::::<><>::res://scripts/world_01.gd<>uid://c71aj0or4vyjo<>uid://dchhu750187kn<>uid://jix7t6x3byw2<>uid://b8v604h1alnc7<>uid://b4k3koq72mrxh<>uid://l8ja16708dgr<>uid://bhrjqeti82po<>uid://vauxj87fxp25<>uid://cwwumf2pbu3js<>res://shaders/movement_clouds.gdshader<>uid://bk67yvrguqfuk<>uid://vmymc0mfcpm<>uid://bijq3ici1eifk<>uid://cotu85d433lp8<>uid://bmj7yrvtfv0jt<>uid://cmgf35v0om6ka<>uid://1ypfdjbp8shw<>uid://qjaf55hiv8e6<>uid://d08iqwdjovxrh<>uid://b7x73eijx021k<>uid://bol0j8msr15gd<>uid://muv4egfo8k1h<>uid://hkqdoagpmiqj<>res://scripts/warning_sign.gd<>uid://566ifnuhjf5i<>res://scripts/spikes-area.gd<>uid://c43v3jr3l3y5q<>res://shaders/transition.gdshader<>uid://dpse6j0b2y3ww<>res://scripts/transition.gd<>res://scripts/color_rect.gd<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://drw48it85tnt5<>uid://rovwp6truy0s<>uid://dldkj1xwpovl<>uid://bqstd338csnuu
 world_02.tscn::PackedScene::5679909575270884539::1775000629::0::1::::<><>::uid://bnxbayhxor46j<>uid://l8ja16708dgr<>uid://38mdj0rlydc8<>res://scripts/hud_manager.gd<>uid://dgfvrh8yg3sch<>uid://byt5ar30rr4lk<>uid://dn4vcy65s8hmt<>uid://bstuh08nhmt8u<>uid://o52k2nui2ji<>uid://6r6so25wes0t<>uid://c43v3jr3l3y5q
 ::res://prefabs/::1775058793
 box_pieces.tscn::PackedScene::7129014170869845360::1773418243::0::1::::<><>::res://scripts/box_pieces.gd
