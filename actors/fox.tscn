@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvq45go75jk85"]
+
+[ext_resource type="Script" path="res://scripts/fox.gd" id="1_3el14"]
+[ext_resource type="Texture2D" uid="uid://b3dh4dc8eudxc" path="res://assets/amazon/fox sprites 2d pixel/Fox Sprite Sheet.png" id="2_s1i1y"]
+[ext_resource type="Texture2D" uid="uid://566ifnuhjf5i" path="res://assets/Mini FX, Items & UI/Mini UI/Speech_Emotes (16 x 16).png" id="3_ycwku"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg8rm"]
+atlas = ExtResource("2_s1i1y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kxq8"]
+atlas = ExtResource("2_s1i1y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbcap"]
+atlas = ExtResource("2_s1i1y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbsi5"]
+atlas = ExtResource("2_s1i1y")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m441"]
+atlas = ExtResource("2_s1i1y")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_leh17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg8rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kxq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbcap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbsi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m441")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eqnj1"]
+radius = 14.0
+
+[node name="fox" type="CharacterBody2D"]
+script = ExtResource("1_3el14")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_leh17")
+animation = &"idle"
+frame_progress = 0.449028
+
+[node name="area_sign" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_sign"]
+visible = false
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_eqnj1")
+
+[node name="texture" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 8)
+texture = ExtResource("3_ycwku")
+region_enabled = true
+region_rect = Rect2(0.376553, 0.188023, 15.9454, 15.8103)

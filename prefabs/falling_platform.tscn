@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://hkqdoagpmiqj"]
 
 [ext_resource type="Script" path="res://scripts/falling_platform.gd" id="1_uv623"]
-[ext_resource type="Texture2D" uid="uid://8m0qrtqxt506" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/falling-platform-brown.png" id="1_w8bcg"]
+[ext_resource type="Texture2D" uid="uid://c7k706050cc76" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/falling-platform-green.png" id="2_g4vqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vd1jt"]
 size = Vector2(32, 16)
@@ -49,7 +49,7 @@ collision_mask = 0
 script = ExtResource("1_uv623")
 
 [node name="texture" type="Sprite2D" parent="."]
-texture = ExtResource("1_w8bcg")
+texture = ExtResource("2_g4vqt")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 visible = false

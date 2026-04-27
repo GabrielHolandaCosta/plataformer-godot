@@ -1,0 +1,452 @@
+[gd_scene load_steps=62 format=3 uid="uid://bvessabos0001"]
+
+[ext_resource type="Script" path="res://scripts/vessa.gd" id="1_vsscript"]
+[ext_resource type="Texture2D" uid="uid://5ygmkebp16p2" path="res://assets/Sprite Pack 8/5 - Vessa/Idle_Dance (32 x 32).png" id="2_idle"]
+[ext_resource type="Texture2D" uid="uid://dapf27vv78u1y" path="res://assets/Sprite Pack 8/5 - Vessa/Cartwheeling_Movement (32 x 32).png" id="3_walk"]
+[ext_resource type="Texture2D" uid="uid://dywctkhkm1gr6" path="res://assets/Sprite Pack 8/5 - Vessa/Crouch (32 x 32).png" id="4_crouch"]
+[ext_resource type="Texture2D" uid="uid://b5gfx27c80eu2" path="res://assets/Sprite Pack 8/5 - Vessa/Drill_Attack_Start (32 x 32).png" id="5_dstart"]
+[ext_resource type="Texture2D" uid="uid://cdf12e25rd4nc" path="res://assets/Sprite Pack 8/5 - Vessa/Drill_Attack (32 x 32).png" id="6_drill"]
+[ext_resource type="Texture2D" uid="uid://cmewqoge15gma" path="res://assets/Sprite Pack 8/5 - Vessa/Drill_Attack_End_Aerial (32 x 32).png" id="7_dair"]
+[ext_resource type="Texture2D" uid="uid://bhegv4cvvk1pi" path="res://assets/Sprite Pack 8/5 - Vessa/Drill_Attack_End_Grounded (32 x 32).png" id="8_dgnd"]
+[ext_resource type="Texture2D" uid="uid://3brlscihykvg" path="res://assets/Sprite Pack 8/5 - Vessa/Jump (32 x 32).png" id="9_jump"]
+[ext_resource type="Texture2D" uid="uid://bmyy6nofkllpf" path="res://assets/Sprite Pack 8/5 - Vessa/Falling (32 x 32).png" id="10_fall"]
+[ext_resource type="Texture2D" uid="uid://1qph5efosdq8" path="res://assets/Sprite Pack 8/5 - Vessa/Landed (32 x 32).png" id="11_land"]
+[ext_resource type="Texture2D" uid="uid://dswyvs4q4mphc" path="res://assets/Sprite Pack 8/5 - Vessa/Hurt (32 x 32).png" id="12_hurt"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="13_hitbox"]
+[ext_resource type="AudioStream" uid="uid://bdrt485gbhvm" path="res://sounds/warriorfight.mp3" id="14_battle"]
+
+[sub_resource type="AtlasTexture" id="A_cr0"]
+atlas = ExtResource("4_crouch")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_cr1"]
+atlas = ExtResource("4_crouch")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_cr2"]
+atlas = ExtResource("4_crouch")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_da4"]
+atlas = ExtResource("7_dair")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dr0"]
+atlas = ExtResource("6_drill")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dr1"]
+atlas = ExtResource("6_drill")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dr2"]
+atlas = ExtResource("6_drill")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dr3"]
+atlas = ExtResource("6_drill")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_da0"]
+atlas = ExtResource("7_dair")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_da1"]
+atlas = ExtResource("7_dair")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_da2"]
+atlas = ExtResource("7_dair")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_da3"]
+atlas = ExtResource("7_dair")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_da5"]
+atlas = ExtResource("7_dair")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg0"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg1"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg2"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg3"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg4"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg5"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_dg6"]
+atlas = ExtResource("8_dgnd")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_ds0"]
+atlas = ExtResource("5_dstart")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_ds1"]
+atlas = ExtResource("5_dstart")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_ds2"]
+atlas = ExtResource("5_dstart")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle1"]
+atlas = ExtResource("2_idle")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle2"]
+atlas = ExtResource("2_idle")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle3"]
+atlas = ExtResource("2_idle")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle4"]
+atlas = ExtResource("2_idle")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle5"]
+atlas = ExtResource("2_idle")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle6"]
+atlas = ExtResource("2_idle")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle7"]
+atlas = ExtResource("2_idle")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle8"]
+atlas = ExtResource("2_idle")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_idle9"]
+atlas = ExtResource("2_idle")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_ld0"]
+atlas = ExtResource("11_land")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_ld1"]
+atlas = ExtResource("11_land")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk0"]
+atlas = ExtResource("3_walk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk1"]
+atlas = ExtResource("3_walk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk2"]
+atlas = ExtResource("3_walk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk3"]
+atlas = ExtResource("3_walk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk4"]
+atlas = ExtResource("3_walk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk5"]
+atlas = ExtResource("3_walk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk6"]
+atlas = ExtResource("3_walk")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="A_walk7"]
+atlas = ExtResource("3_walk")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vessa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_cr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_cr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_cr2")
+}],
+"loop": false,
+"name": &"crouch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_da4")
+}],
+"loop": false,
+"name": &"defeated_pose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_dr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dr3")
+}],
+"loop": true,
+"name": &"drill",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_da0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_da1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_da2")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_da3")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_da4")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_da5")
+}],
+"loop": false,
+"name": &"drill_end_aerial",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_dg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_dg6")
+}],
+"loop": false,
+"name": &"drill_end_grounded",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_ds0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_ds1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_ds2")
+}],
+"loop": false,
+"name": &"drill_start",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_fall")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_hurt")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_idle0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle2")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle3")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle4")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle5")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle6")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle7")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle8")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_idle9")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jump")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_ld0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_ld1")
+}],
+"loop": false,
+"name": &"landed",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_walk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_walk7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Shape_body"]
+size = Vector2(14, 22)
+
+[sub_resource type="RectangleShape2D" id="Shape_stomp"]
+size = Vector2(18, 5)
+
+[sub_resource type="RectangleShape2D" id="Shape_trigger"]
+size = Vector2(220, 64)
+
+[node name="vessa" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_vsscript")
+move_speed = 55.0
+enemy_score = 1500
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_vessa")
+animation = &"crouch"
+autoplay = "idle"
+frame = 2
+frame_progress = 1.0
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -11)
+shape = SubResource("Shape_body")
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(-9, 0)
+collision_mask = 6
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(0, 12)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("13_hitbox")]
+
+[node name="collision2" type="CollisionShape2D" parent="hitbox"]
+visible = false
+position = Vector2(0, -28)
+shape = SubResource("Shape_stomp")
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="collision" type="CollisionShape2D" parent="trigger"]
+visible = false
+position = Vector2(0, -16)
+shape = SubResource("Shape_trigger")
+
+[node name="battle_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_battle")
+volume_db = -80.0
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://di3hnqgjh3ejh"]
+
+[ext_resource type="Script" path="res://scripts/treasure_chest.gd" id="1_tcscript"]
+[ext_resource type="Texture2D" uid="uid://bvvmdkqhml8sm" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Treasure_Chest (32 x 16).png" id="2_tctex"]
+[ext_resource type="Texture2D" uid="uid://566ifnuhjf5i" path="res://assets/Mini FX, Items & UI/Mini UI/Speech_Emotes (16 x 16).png" id="3_emote"]
+
+[sub_resource type="AtlasTexture" id="A_tc0"]
+atlas = ExtResource("2_tctex")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="A_tc5"]
+atlas = ExtResource("2_tctex")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="A_tc1"]
+atlas = ExtResource("2_tctex")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="A_tc2"]
+atlas = ExtResource("2_tctex")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="A_tc3"]
+atlas = ExtResource("2_tctex")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="A_tc4"]
+atlas = ExtResource("2_tctex")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_tc0")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_tc5")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("A_tc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_tc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_tc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_tc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_tc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("A_tc5")
+}],
+"loop": false,
+"name": &"opening",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Shape_area"]
+size = Vector2(40, 24)
+
+[node name="treasure_chest" type="Node2D"]
+script = ExtResource("1_tcscript")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_tc")
+animation = &"closed"
+
+[node name="kit_spawn" type="Marker2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="area" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area"]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("Shape_area")
+
+[node name="prompt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -28)
+texture = ExtResource("3_emote")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

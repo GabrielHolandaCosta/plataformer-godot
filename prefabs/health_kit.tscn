@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chealthkitprfb"]
+
+[ext_resource type="Script" path="res://scripts/health_kit.gd" id="1_hkscript"]
+[ext_resource type="Texture2D" uid="uid://b8vq6fnrq2q27" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Health_Kit (16 x 16).png" id="2_hktex"]
+
+[sub_resource type="RectangleShape2D" id="Shape_hk"]
+size = Vector2(14, 14)
+
+[node name="health_kit" type="Area2D" groups=["items"]]
+collision_layer = 8
+collision_mask = 1
+script = ExtResource("1_hkscript")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hktex")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("Shape_hk")

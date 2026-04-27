@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=3 uid="uid://crbtm6tplt0v6"]
+
+[ext_resource type="Script" path="res://scripts/robo_totem.gd" id="1_rt001"]
+[ext_resource type="Texture2D" uid="uid://neu5me16iuer" path="res://assets/Sprite Pack 2/6 - Robo Totem/Armored_Standing (16 x 32).png" id="2_rt002"]
+[ext_resource type="Texture2D" uid="uid://dkdrdyb3fyokf" path="res://assets/Sprite Pack 2/6 - Robo Totem/Armored_Walking (16 x 32).png" id="3_rt003"]
+[ext_resource type="Texture2D" uid="uid://bt5af6nncmd0b" path="res://assets/Sprite Pack 2/6 - Robo Totem/Walking (16 x 16).png" id="4_rt004"]
+[ext_resource type="Texture2D" uid="uid://dnqh8f644omp0" path="res://assets/Sprite Pack 2/6 - Robo Totem/Hurt (16 x 16).png" id="5_rt005"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="6_rt006"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt010"]
+size = Vector2(10, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt010b"]
+size = Vector2(10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt011"]
+atlas = ExtResource("2_rt002")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt012"]
+atlas = ExtResource("3_rt003")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt013"]
+atlas = ExtResource("3_rt003")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rt014"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt011")
+}],
+"loop": true,
+"name": &"armored_stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt012")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt013")
+}],
+"loop": true,
+"name": &"armored_walk",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt017"]
+atlas = ExtResource("5_rt005")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt015"]
+atlas = ExtResource("4_rt004")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt016"]
+atlas = ExtResource("4_rt004")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rt018"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt017")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt015")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt016")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt019"]
+size = Vector2(12, 5)
+
+[node name="robo_totem" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_rt001")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_rt010")
+
+[node name="collision_unarmored" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rt010b")
+disabled = true
+
+[node name="anim_armored" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_rt014")
+animation = &"armored_walk"
+autoplay = "armored_walk"
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_rt018")
+animation = &"walk"
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+target_position = Vector2(-7, 0)
+collision_mask = 6
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+target_position = Vector2(0, 14)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("6_rt006")]
+
+[node name="collision2" type="CollisionShape2D" parent="hitbox"]
+visible = false
+position = Vector2(0, -23.5)
+shape = SubResource("RectangleShape2D_rt019")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

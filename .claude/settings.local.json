@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($paths = @\\(\"C:\\\\Users\\\\gabriel\\\\Documents\\\\Plataform 2D Godot\\\\assets\\\\Sprite Pack 2\\\\6 - Robo Totem\\\\Armored_Standing \\(16 x 32\\).png\",\"C:\\\\Users\\\\gabriel\\\\Documents\\\\Plataform 2D Godot\\\\assets\\\\Sprite Pack 2\\\\6 - Robo Totem\\\\Armored_Walking \\(16 x 32\\).png\",\"C:\\\\Users\\\\gabriel\\\\Documents\\\\Plataform 2D Godot\\\\assets\\\\Sprite Pack 2\\\\6 - Robo Totem\\\\Walking \\(16 x 16\\).png\",\"C:\\\\Users\\\\gabriel\\\\Documents\\\\Plataform 2D Godot\\\\assets\\\\Sprite Pack 2\\\\6 - Robo Totem\\\\Hurt \\(16 x 16\\).png\"\\); Add-Type -AssemblyName System.Drawing; foreach\\($p in $paths\\){$i=[System.Drawing.Image]::FromFile\\($p\\); \"$p => $\\($i.Width\\) x $\\($i.Height\\)\"; $i.Dispose\\(\\)})",
+      "Bash(python3 -c ' *)",
+      "Bash(command -v python)",
+      "Bash(python -c 'from PIL import Image; im=Image.open\\(r'\\\\''__TRACKED_VAR__'\\\\''\\); print\\('\\\\''__TRACKED_VAR__'\\\\'',im.size\\)')",
+      "Bash(python -c 'import struct; f=open\\(r'\\\\''__TRACKED_VAR__'\\\\'','\\\\''rb'\\\\''\\); f.read\\(16\\); w,h=struct.unpack\\('\\\\''>II'\\\\'',f.read\\(8\\)\\); print\\('\\\\''__TRACKED_VAR__'\\\\'',w,h\\)')",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/gabriel//**)",
+      "Bash(where godot *)",
+      "Bash(\"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless --path \"C:/Users/gabriel/Documents/Plataform 2D Godot\" --check-only --quit)",
+      "Bash(\"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless --path \"C:/Users/gabriel/Documents/Plataform 2D Godot\" --quit-after 2)",
+      "Bash(\"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless -e --quit)",
+      "Bash(timeout 8 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://actors/vessa.tscn)",
+      "Bash(timeout 6 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://actors/vessa.tscn)",
+      "Bash(timeout 6 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://levels/world_01.tscn)",
+      "Bash(timeout 5 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://actors/vessa.tscn)",
+      "Bash(timeout 5 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://levels/world_01.tscn)",
+      "Bash(python -c \"from PIL import Image; print\\('chest', Image.open\\('Treasure_Chest \\(32 x 16\\).png'\\).size\\); print\\('kit', Image.open\\('Health_Kit \\(16 x 16\\).png'\\).size\\)\")",
+      "Bash(timeout 5 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://prefabs/treasure_chest.tscn)",
+      "Bash(timeout 5 \"/c/Users/gabriel/Downloads/Godot_v4.0-stable_win64_console.exe\" --headless res://prefabs/health_kit.tscn)",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git reset *)",
+      "Bash(git rm *)",
+      "Bash(git add *)"
+    ]
+  }
+}

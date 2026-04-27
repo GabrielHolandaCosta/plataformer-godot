@@ -139,7 +139,6 @@ shape = SubResource("RectangleShape2D_8gp7t")
 
 [node name="jump_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_f8yed")
-volume_db = -30.0
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="head_collider" to="." method="_on_head_collider_body_entered"]

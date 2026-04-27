@@ -4,11 +4,29 @@ extends Node2D
 @onready var interaction_area: Area2D = $area_sign
 
 const DIALOG_LINES: Array[String] = [
-	"Olá, aventureiro...",
-	"Este mundo ainda é jovem.",
-	"Muitas coisas estão por vir.",
-	"Prepare-se.",
-	"Sua jornada está apenas começando.",
+	"Guardião... até que enfim você acordou...",
+	"Eu estava procurando por você... a floresta precisa da sua ajuda.",
+
+	"Durante a noite... algo aconteceu.",
+	"Um fogo começou a se espalhar no coração da mata...",
+	"mas não era um fogo comum...",
+	"a fumaça era densa... escura... quase viva.",
+
+	"Desde então... tudo mudou.",
+	"O vento ficou pesado... as árvores estão inquietas...",
+	"e os animais... estão fugindo... ou desaparecendo.",
+
+	"Eu sinto uma presença... fria... silenciosa...",
+	"como uma sombra que cresce sem ser vista...",
+	"mas eu não consigo entender o que é...",
+
+	"Você é o guardião...",
+	"a floresta sempre confiou em você...",
+	"e agora ela precisa mais do que nunca.",
+
+	"Vá até o coração da floresta...",
+	"descubra o que está acontecendo...",
+	"antes que essa escuridão se espalhe ainda mais..."
 ]
 
 var player_inside := false

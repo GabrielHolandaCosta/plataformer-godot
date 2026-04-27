@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtars8jm2ym7d"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_eodqj"]
+[ext_resource type="PackedScene" uid="uid://bvq45go75jk85" path="res://actors/fox.tscn" id="1_rdkrv"]
+[ext_resource type="PackedScene" uid="uid://l8ja16708dgr" path="res://actors/player.tscn" id="2_sm8hl"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_eodqj")
+
+[node name="fox" parent="." instance=ExtResource("1_rdkrv")]
+
+[node name="player" parent="." instance=ExtResource("2_sm8hl")]
+
+[node name="HUD" type="CanvasLayer" parent="."]

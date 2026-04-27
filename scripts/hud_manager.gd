@@ -3,8 +3,7 @@ extends Control
 @onready var coins_counter = $container/coins_container/coins_counter as Label
 @onready var timer_counter = $container/timer_container/timer_counter as Label
 @onready var score_counter = $container/score_container/score_counter as Label
-@onready var life_counter = $container/life_container/life_counter as Label
-@onready var clock_timer = $clock_timer as Timer
+@onready var clock_timer   = $clock_timer as Timer
 
 var minutes = 0
 var seconds = 0
@@ -18,17 +17,19 @@ signal time_is_up()
 func _ready():
 	coins_counter.text = str("%04d" % Globals.coins)
 	score_counter.text = str("%06d" % Globals.score)
-	life_counter.text = str("%02d" % Globals.player_life)
 
 	reset_clock_timer()
 	update_timer_text()
 	clock_timer.start()
 
+	# Adiciona a barra de vida animada no mesmo lugar (canto inferior-esquerdo)
+	var health_bar = preload("res://prefabs/health_bar.tscn").instantiate()
+	$container.add_child(health_bar)
 
-func _process(delta):
+
+func _process(_delta):
 	coins_counter.text = str("%04d" % Globals.coins)
 	score_counter.text = str("%06d" % Globals.score)
-	life_counter.text = str("%02d" % Globals.player_life)
 
 
 func _on_clock_timer_timeout():

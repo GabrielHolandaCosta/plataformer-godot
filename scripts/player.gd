@@ -18,6 +18,7 @@ const COIN_DROP_SCENE := preload("res://prefabs/coin_rigid.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
 var is_hurted := false
+var can_move := true
 
 signal player_has_died()
 
@@ -27,9 +28,16 @@ signal player_has_died()
 @onready var ray_left := $ray_left
 @onready var jump_sfx = $jump_sfx as AudioStreamPlayer
 @onready var destroy_sfx = preload("res://sounds/destroy_sfx.tscn")
-
+@export var player_start_position: Node2D
 
 func _physics_process(delta):
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		
+		_play_animation("idle")
+		return
+		
 	if not is_on_floor():
 		if velocity.y > 0.0:
 			velocity.y += gravity * FALL_GRAVITY_MULTIPLIER * delta
@@ -111,6 +119,9 @@ func _play_animation(anim_name: String):
 
 func _on_hurtbox_body_entered(body):
 	if not body.is_in_group("enemies"):
+		return
+
+	if body.get("is_dead"):
 		return
 
 	if is_hurted:
@@ -205,3 +216,18 @@ func play_destroy_sfx() -> void:
 	sound_sfx.play()
 	await sound_sfx.finished
 	sound_sfx.queue_free()
+	
+func handle_death_zone():
+	Globals.player_life -= 1
+	if Globals.player_life > 0:
+		visible = false
+		set_physics_process(false)
+
+		await get_tree().create_timer(1.0).timeout
+		global_position = player_start_position.global_position
+		visible = true
+		set_physics_process(true)
+	else:
+		visible = false
+		await get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")

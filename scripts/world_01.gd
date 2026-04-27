@@ -7,6 +7,7 @@ extends Node2D
 @onready var clock_timer = $HUD/control/clock_timer
 @onready var control = $HUD/control
 
+
 func _ready():
 	Globals.player_start_position = $player_start_position
 	Globals.player = player
@@ -15,6 +16,9 @@ func _ready():
 	Globals.player.follow_camera(camera)
 	Globals.player.player_has_died.connect(game_over)
 	control.time_is_up.connect(game_over)
+
+	var tutorial = preload("res://prefabs/tutorial_overlay.tscn").instantiate()
+	$HUD.add_child(tutorial)
 
 
 func _process(delta):

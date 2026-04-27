@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/moving_plataform.gd" id="1_q1gne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxn65"]
-size = Vector2(32, 16)
+size = Vector2(16, 16)
 
 [node name="moving_plataform" type="Node2D"]
 script = ExtResource("1_q1gne")
@@ -15,7 +15,7 @@ collision_layer = 2
 [node name="sprite_platform" type="Sprite2D" parent="platform"]
 texture = ExtResource("1_o0hjx")
 region_enabled = true
-region_rect = Rect2(96, 64, 32, 16)
+region_rect = Rect2(144, 64, 16, 16)
 
 [node name="collision" type="CollisionShape2D" parent="platform"]
 visible = false

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csign00001ab"]
+
+[ext_resource type="Script" path="res://scripts/sign.gd" id="1_sign01"]
+[ext_resource type="Texture2D" uid="uid://566ifnuhjf5i" path="res://assets/Mini FX, Items & UI/Mini UI/Speech_Emotes (16 x 16).png" id="2_sign02"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sign"]
+radius = 30.0
+
+[node name="sign" type="Node2D"]
+script = ExtResource("1_sign01")
+
+[node name="area_sign" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_sign"]
+visible = false
+shape = SubResource("CircleShape2D_sign")
+
+[node name="texture" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_sign02")
+region_enabled = true
+region_rect = Rect2(0.376553, 0.188023, 15.9454, 15.8103)
