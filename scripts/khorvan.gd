@@ -14,23 +14,28 @@ class_name KhorvanBoss
 #   → quando hp <= 0: DEFEAT_DIALOG → DEAD com fade.
 # ----------------------------------------------------------------------------
 
-@export var max_hp: int = 10
-@export var approach_speed: float = 60.0
-@export var leap_velocity: float = -300.0
-@export var leap_horizontal_speed: float = 110.0
-@export var attack_score: int = 2500
-@export var stomp_invuln_time: float = 0.55
+@export var max_hp: int = 14
+@export var approach_speed: float = 80.0
+@export var leap_velocity: float = -340.0
+@export var leap_horizontal_speed: float = 140.0
+@export var attack_score: int = 3000
+@export var stomp_invuln_time: float = 0.75
 @export var slash_range: float = 36.0
-@export var leap_chance: int = 3                 # leap a cada N ciclos
-@export var idle_pause_time: float = 0.6
+@export var leap_chance: int = 2                 # leap a cada N ciclos
+@export var idle_pause_time: float = 0.40
 @export var aggro_range: float = 320.0
+
+# fase 2 (HP <= metade): boss enraged, com cor avermelhada e tempos reduzidos.
+@export var enraged_speed_mult: float = 1.30
+@export var enraged_idle_mult: float = 0.55
+@export var enraged_color := Color(1.0, 0.78, 0.78, 1.0)
 
 # espada: deslocamento à frente do corpo + janela ativa do golpe.
 # attack1/attack2 têm 6 frames a 12 fps (≈0.50s). O impacto visual cai
-# no frame ~3-4, então a hitbox ativa de 0.30s a 0.46s do início do swing.
+# no frame ~3-4, então a hitbox ativa de 0.28s a 0.50s do início do swing.
 @export var sword_offset_x: float = 22.0
-@export var sword_active_delay: float = 0.30
-@export var sword_active_duration: float = 0.16
+@export var sword_active_delay: float = 0.28
+@export var sword_active_duration: float = 0.22
 
 # distância em que o Khorvan para na entrada para conversar com o herói
 @export var intro_stop_distance: float = 56.0
@@ -78,6 +83,8 @@ var defeat_started: bool = false
 
 var sword_active: bool = false
 var _sword_phase_timer: float = 0.0
+
+var enraged: bool = false
 
 @onready var asp: AnimatedSprite2D = $anim
 @onready var hitbox_collision: CollisionShape2D = $hitbox/collision2
@@ -229,7 +236,7 @@ func _state_hurt(delta: float) -> void:
 	move_and_slide()
 	if state_timer <= 0.0:
 		is_invulnerable = false
-		asp.modulate = Color(1, 1, 1, 1)
+		asp.modulate = enraged_color if enraged else Color(1, 1, 1, 1)
 		_change_state(State.IDLE)
 
 
@@ -268,8 +275,13 @@ func _change_state(new_state: int) -> void:
 			_play("attack2")
 		State.LEAP:
 			var dir_to_player := _direction_to_player()
-			# pula recuando levemente (afasta do player) para criar espaço
-			var leap_dir := -dir_to_player if dir_to_player != 0.0 else float(-direction)
+			# Em fase normal recua. Em fase enraged, 50% das vezes pula PARA o player
+			# (avanço aéreo agressivo) — quebra o ritmo de quem espera ele se afastar.
+			var leap_dir: float
+			if enraged and dir_to_player != 0.0 and randf() < 0.5:
+				leap_dir = dir_to_player
+			else:
+				leap_dir = -dir_to_player if dir_to_player != 0.0 else float(-direction)
 			velocity.y = leap_velocity
 			velocity.x = leap_dir * leap_horizontal_speed
 			direction = int(sign(dir_to_player)) if dir_to_player != 0.0 else direction
@@ -289,9 +301,11 @@ func _change_state(new_state: int) -> void:
 			velocity.y = -150.0
 			_set_sword_active(false)
 			_play("hurt")
+			# se já está enraged, ao sair de HURT o estado IDLE restaura a cor avermelhada
 		State.DEFEAT_DIALOG:
 			state_timer = 0.0
 			is_invulnerable = true
+			enraged = false
 			velocity = Vector2.ZERO
 			_disable_hitbox_collision()
 			_set_sword_active(false)
@@ -522,8 +536,23 @@ func take_stomp_damage() -> void:
 	hp -= 1
 	if hp <= 0:
 		_change_state(State.DEFEAT_DIALOG)
-	else:
-		_change_state(State.HURT)
+		return
+	# Entra em modo "enraged" quando passa da metade da vida.
+	if not enraged and hp <= int(ceil(float(max_hp) / 2.0)):
+		_enter_enraged()
+	_change_state(State.HURT)
+
+
+func _enter_enraged() -> void:
+	enraged = true
+	approach_speed *= enraged_speed_mult
+	move_speed = approach_speed
+	idle_pause_time *= enraged_idle_mult
+	leap_horizontal_speed *= 1.15
+	# A cor "raiva" fica fixa durante todo o resto da batalha (exceto frames de stomp,
+	# que aplicam o flash vermelho-claro temporário).
+	if asp:
+		asp.modulate = enraged_color
 
 
 func die() -> void:
