@@ -275,6 +275,7 @@ func _state_hurt(delta: float) -> void:
 	move_and_slide()
 	if state_timer <= 0.0:
 		is_invulnerable = false
+		set_collision_layer_value(3, true)  # volta tangível
 		asp.modulate = Color(1, 1, 1, 1)
 		has_started_drill = false
 		_change_state(State.IDLE)
@@ -348,9 +349,12 @@ func _change_state(new_state: int) -> void:
 		State.HURT:
 			state_timer = stomp_invuln_time
 			is_invulnerable = true
+			# Vira intangível pro player durante o invuln (sai do layer "enemies"
+			# pro player atravessar e não conseguir se equilibrar em cima).
+			set_collision_layer_value(3, false)
 			asp.modulate = Color(1, 0.4, 0.4, 1)
 			# Knockback: pula e recua na direção contrária ao player, criando
-			# espaço pra evitar que o player fique stompando infinito.
+			# espaço pra evitar stomp infinito.
 			var knock_dir := -_direction_to_player()
 			if knock_dir == 0.0:
 				knock_dir = float(-direction)
