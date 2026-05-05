@@ -32,10 +32,18 @@ signal player_has_died()
 
 func _physics_process(delta):
 	if not can_move:
-		velocity = Vector2.ZERO
+		# Player travado por diálogo/cutscene: zera velocidade horizontal,
+		# mas mantém a gravidade pra ele aterrissar caso esteja no ar.
+		velocity.x = 0
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		else:
+			velocity.y = 0
 		move_and_slide()
-		
-		_play_animation("idle")
+		if is_on_floor():
+			_play_animation("idle")
+		else:
+			_play_animation("fall" if velocity.y > 10 else "jump")
 		return
 		
 	if not is_on_floor():

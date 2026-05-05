@@ -713,7 +713,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="player" parent="." node_paths=PackedStringArray("player_start_position") instance=ExtResource("2_hy6a4")]
-position = Vector2(69, 344)
+position = Vector2(2911, 294)
 player_start_position = NodePath("../player_start_position")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -905,6 +905,9 @@ flip_h = true
 [node name="treasure_chest3" parent="theasure" instance=ExtResource("31_e27lb")]
 position = Vector2(2744, 223)
 
+[node name="treasure_chest4" parent="theasure" instance=ExtResource("31_e27lb")]
+position = Vector2(3434, 344)
+
 [node name="moving_plataforms" type="Node2D" parent="."]
 
 [node name="moving_plataform" parent="moving_plataforms" instance=ExtResource("30_714ke")]
@@ -990,7 +993,7 @@ position = Vector2(2100, 350)
 [node name="boss" type="Node2D" parent="enemies"]
 
 [node name="khorvan" parent="enemies/boss" instance=ExtResource("36_y28r6")]
-position = Vector2(3315, 344)
+position = Vector2(3229, 346)
 
 [node name="fallzone" type="Node2D" parent="."]
 visible = false
