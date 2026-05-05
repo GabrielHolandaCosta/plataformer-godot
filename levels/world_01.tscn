@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://hkqdoagpmiqj" path="res://prefabs/falling_platform.tscn" id="21_h3jqt"]
 [ext_resource type="Script" path="res://scripts/spikes-area.gd" id="24_781tv"]
 [ext_resource type="PackedScene" uid="uid://c43v3jr3l3y5q" path="res://prefabs/goal.tscn" id="24_e5010"]
+[ext_resource type="PackedScene" uid="uid://clvlbound01" path="res://prefabs/level_boundary.tscn" id="24_lvlb01"]
 [ext_resource type="Shader" path="res://shaders/transition.gdshader" id="25_4tp3m"]
 [ext_resource type="Texture2D" uid="uid://dpse6j0b2y3ww" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Spike.png" id="25_arhmk"]
 [ext_resource type="Script" path="res://scripts/transition.gd" id="25_fxr58"]
@@ -911,7 +912,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="player" parent="." node_paths=PackedStringArray("player_start_position") instance=ExtResource("3_qgbbx")]
-position = Vector2(91, 223)
+position = Vector2(3380, 208)
 player_start_position = NodePath("../player_start_position")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -919,6 +920,9 @@ position = Vector2(1008, 35)
 offset = Vector2(0, -40)
 zoom = Vector2(2, 2)
 limit_left = 0
+limit_top = -200
+limit_right = 3500
+limit_bottom = 460
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -1151,11 +1155,14 @@ position = Vector2(1571.5, 24.5)
 shape = SubResource("RectangleShape2D_laoym")
 
 [node name="goal" parent="." instance=ExtResource("24_e5010")]
-position = Vector2(3391, 211)
+position = Vector2(3416, 210)
 next_level = "res://levels/world_02.tscn"
 requires_boss = "vessa"
 transition_title = "WORLD 2"
 transition_subtitle = "Floresta Distante"
+
+[node name="level_boundary" parent="." instance=ExtResource("24_lvlb01")]
+position = Vector2(3486, 200)
 
 [node name="transition" type="CanvasLayer" parent="."]
 script = ExtResource("25_fxr58")
