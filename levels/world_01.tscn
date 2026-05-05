@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bev4vjwpxmdxi"]
+[gd_scene load_steps=83 format=3 uid="uid://bev4vjwpxmdxi"]
 
 [ext_resource type="Script" path="res://scripts/world_01.gd" id="1_68hbl"]
 [ext_resource type="Texture2D" uid="uid://c71aj0or4vyjo" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_sqwmo"]
@@ -921,7 +921,7 @@ offset = Vector2(0, -40)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = -200
-limit_right = 3500
+limit_right = 3900
 limit_bottom = 460
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -1162,7 +1162,7 @@ transition_title = "WORLD 2"
 transition_subtitle = "Floresta Distante"
 
 [node name="level_boundary" parent="." instance=ExtResource("24_lvlb01")]
-position = Vector2(3486, 200)
+position = Vector2(3464, 210)
 
 [node name="transition" type="CanvasLayer" parent="."]
 script = ExtResource("25_fxr58")

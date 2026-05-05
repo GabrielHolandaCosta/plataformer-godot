@@ -349,7 +349,13 @@ func _change_state(new_state: int) -> void:
 			state_timer = stomp_invuln_time
 			is_invulnerable = true
 			asp.modulate = Color(1, 0.4, 0.4, 1)
-			velocity.y = -160.0
+			# Knockback: pula e recua na direção contrária ao player, criando
+			# espaço pra evitar que o player fique stompando infinito.
+			var knock_dir := -_direction_to_player()
+			if knock_dir == 0.0:
+				knock_dir = float(-direction)
+			velocity.x = knock_dir * 180.0
+			velocity.y = -200.0
 			_play("hurt")
 		State.DEFEAT_DIALOG:
 			state_timer = 0.0

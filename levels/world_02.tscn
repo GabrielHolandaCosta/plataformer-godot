@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cm6njsw5yfbnv"]
+[gd_scene load_steps=64 format=3 uid="uid://cm6njsw5yfbnv"]
 
 [ext_resource type="Script" path="res://scripts/world_02.gd" id="1_ejbfq"]
 [ext_resource type="Texture2D" uid="uid://dchhu750187kn" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Water_frames (16 x 32).png" id="1_xeftj"]
@@ -715,7 +715,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="player" parent="." node_paths=PackedStringArray("player_start_position") instance=ExtResource("2_hy6a4")]
-position = Vector2(69, 343)
+position = Vector2(3622, 321)
 player_start_position = NodePath("../player_start_position")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -724,7 +724,7 @@ offset = Vector2(0, -40)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = -200
-limit_right = 3600
+limit_right = 4000
 limit_bottom = 460
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -1026,13 +1026,13 @@ position = Vector2(2748, 385)
 position = Vector2(69, 336)
 
 [node name="goal" parent="." instance=ExtResource("38_goal02")]
-position = Vector2(3500, 211)
+position = Vector2(3689, 328)
 next_level = "res://levels/world_01.tscn"
 requires_boss = "khorvan"
 transition_title = "FIM DO CICLO"
 transition_subtitle = "...por enquanto"
 
 [node name="level_boundary" parent="." instance=ExtResource("39_lvlb02")]
-position = Vector2(3570, 200)
+position = Vector2(3731, 328)
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

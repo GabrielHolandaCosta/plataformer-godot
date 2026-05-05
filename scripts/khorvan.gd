@@ -298,7 +298,13 @@ func _change_state(new_state: int) -> void:
 			state_timer = stomp_invuln_time
 			is_invulnerable = true
 			asp.modulate = Color(1, 0.4, 0.4, 1)
-			velocity.y = -150.0
+			# Knockback: pula e recua na direção contrária ao player, abrindo
+			# espaço pra evitar que o player stompe infinito sem ser tocado.
+			var knock_dir := -_direction_to_player()
+			if knock_dir == 0.0:
+				knock_dir = float(-direction)
+			velocity.x = knock_dir * 200.0
+			velocity.y = -210.0
 			_set_sword_active(false)
 			_play("hurt")
 			# se já está enraged, ao sair de HURT o estado IDLE restaura a cor avermelhada
