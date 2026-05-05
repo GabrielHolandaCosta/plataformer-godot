@@ -12,7 +12,7 @@ class_name LevelTransition
 # A camada do CanvasLayer fica em 100 pra ficar acima de qualquer HUD.
 
 @onready var fade_rect: ColorRect = $fade_rect
-@onready var vignette: ColorRect = $vignette
+@onready var vignette: TextureRect = $vignette
 @onready var title_label: Label = $title
 @onready var subtitle_label: Label = $subtitle
 @onready var divider: ColorRect = $divider
