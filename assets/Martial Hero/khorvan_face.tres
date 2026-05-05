@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ckhorvanface01"]
+
+[ext_resource type="Texture2D" uid="uid://bkrurrw4nl4q6" path="res://assets/Martial Hero/Sprites/Idle.png" id="1_idle"]
+
+[resource]
+atlas = ExtResource("1_idle")
+region = Rect2(50, 50, 100, 100)

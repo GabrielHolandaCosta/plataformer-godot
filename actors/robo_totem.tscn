@@ -110,7 +110,7 @@ autoplay = "armored_walk"
 visible = false
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_rt018")
-animation = &"walk"
+animation = &"hurt"
 
 [node name="wall_detector" type="RayCast2D" parent="."]
 visible = false

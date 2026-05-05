@@ -1,0 +1,296 @@
+[gd_scene load_steps=58 format=3 uid="uid://ckhorvanboss01"]
+
+[ext_resource type="Script" path="res://scripts/khorvan.gd" id="1_kvscript"]
+[ext_resource type="Texture2D" uid="uid://bkrurrw4nl4q6" path="res://assets/Martial Hero/Sprites/Idle.png" id="2_idle"]
+[ext_resource type="Texture2D" uid="uid://b70sbp16nnp4o" path="res://assets/Martial Hero/Sprites/Run.png" id="3_run"]
+[ext_resource type="Texture2D" uid="uid://cqnhkcyir7kru" path="res://assets/Martial Hero/Sprites/Jump.png" id="4_jump"]
+[ext_resource type="Texture2D" uid="uid://e60bgpxfpdx5" path="res://assets/Martial Hero/Sprites/Fall.png" id="5_fall"]
+[ext_resource type="Texture2D" uid="uid://br8t0n0ecqqj" path="res://assets/Martial Hero/Sprites/Attack1.png" id="6_atk1"]
+[ext_resource type="Texture2D" uid="uid://vms1dffkelmd" path="res://assets/Martial Hero/Sprites/Attack2.png" id="7_atk2"]
+[ext_resource type="Texture2D" uid="uid://kc1ykokkpl46" path="res://assets/Martial Hero/Sprites/Take Hit.png" id="8_hurt"]
+[ext_resource type="Texture2D" uid="uid://wwri2e6fbgrf" path="res://assets/Martial Hero/Sprites/Death.png" id="9_death"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="10_hitbox"]
+[ext_resource type="AudioStream" uid="uid://bdrt485gbhvm" path="res://sounds/warriorfight.mp3" id="11_battle"]
+
+[sub_resource type="AtlasTexture" id="AT_kv_i0"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i1"]
+atlas = ExtResource("2_idle")
+region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i2"]
+atlas = ExtResource("2_idle")
+region = Rect2(400, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i3"]
+atlas = ExtResource("2_idle")
+region = Rect2(600, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i4"]
+atlas = ExtResource("2_idle")
+region = Rect2(800, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i5"]
+atlas = ExtResource("2_idle")
+region = Rect2(1000, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i6"]
+atlas = ExtResource("2_idle")
+region = Rect2(1200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_i7"]
+atlas = ExtResource("2_idle")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_r0"]
+atlas = ExtResource("3_run")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r1"]
+atlas = ExtResource("3_run")
+region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r2"]
+atlas = ExtResource("3_run")
+region = Rect2(400, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r3"]
+atlas = ExtResource("3_run")
+region = Rect2(600, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r4"]
+atlas = ExtResource("3_run")
+region = Rect2(800, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r5"]
+atlas = ExtResource("3_run")
+region = Rect2(1000, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r6"]
+atlas = ExtResource("3_run")
+region = Rect2(1200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_r7"]
+atlas = ExtResource("3_run")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_j0"]
+atlas = ExtResource("4_jump")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_j1"]
+atlas = ExtResource("4_jump")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_f0"]
+atlas = ExtResource("5_fall")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_f1"]
+atlas = ExtResource("5_fall")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_a10"]
+atlas = ExtResource("6_atk1")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a11"]
+atlas = ExtResource("6_atk1")
+region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a12"]
+atlas = ExtResource("6_atk1")
+region = Rect2(400, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a13"]
+atlas = ExtResource("6_atk1")
+region = Rect2(600, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a14"]
+atlas = ExtResource("6_atk1")
+region = Rect2(800, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a15"]
+atlas = ExtResource("6_atk1")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_a20"]
+atlas = ExtResource("7_atk2")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a21"]
+atlas = ExtResource("7_atk2")
+region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a22"]
+atlas = ExtResource("7_atk2")
+region = Rect2(400, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a23"]
+atlas = ExtResource("7_atk2")
+region = Rect2(600, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a24"]
+atlas = ExtResource("7_atk2")
+region = Rect2(800, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_a25"]
+atlas = ExtResource("7_atk2")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_h0"]
+atlas = ExtResource("8_hurt")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_h1"]
+atlas = ExtResource("8_hurt")
+region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_h2"]
+atlas = ExtResource("8_hurt")
+region = Rect2(400, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_h3"]
+atlas = ExtResource("8_hurt")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AT_kv_d0"]
+atlas = ExtResource("9_death")
+region = Rect2(0, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_d1"]
+atlas = ExtResource("9_death")
+region = Rect2(200, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_d2"]
+atlas = ExtResource("9_death")
+region = Rect2(400, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_d3"]
+atlas = ExtResource("9_death")
+region = Rect2(600, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_d4"]
+atlas = ExtResource("9_death")
+region = Rect2(800, 0, 200, 200)
+[sub_resource type="AtlasTexture" id="AT_kv_d5"]
+atlas = ExtResource("9_death")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SF_khorvan"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_i0")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i1")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i2")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i3")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i4")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i5")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i6")},
+{"duration": 1.0, "texture": SubResource("AT_kv_i7")}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_r0")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r1")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r2")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r3")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r4")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r5")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r6")},
+{"duration": 1.0, "texture": SubResource("AT_kv_r7")}],
+"loop": true,
+"name": &"run",
+"speed": 14.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_j0")},
+{"duration": 1.0, "texture": SubResource("AT_kv_j1")}],
+"loop": false,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_f0")},
+{"duration": 1.0, "texture": SubResource("AT_kv_f1")}],
+"loop": true,
+"name": &"fall",
+"speed": 8.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_a10")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a11")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a12")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a13")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a14")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a15")}],
+"loop": false,
+"name": &"attack1",
+"speed": 12.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_a20")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a21")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a22")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a23")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a24")},
+{"duration": 1.0, "texture": SubResource("AT_kv_a25")}],
+"loop": false,
+"name": &"attack2",
+"speed": 12.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_h0")},
+{"duration": 1.0, "texture": SubResource("AT_kv_h1")},
+{"duration": 1.0, "texture": SubResource("AT_kv_h2")},
+{"duration": 1.0, "texture": SubResource("AT_kv_h3")}],
+"loop": false,
+"name": &"hurt",
+"speed": 12.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_kv_d0")},
+{"duration": 1.0, "texture": SubResource("AT_kv_d1")},
+{"duration": 1.0, "texture": SubResource("AT_kv_d2")},
+{"duration": 1.0, "texture": SubResource("AT_kv_d3")},
+{"duration": 1.0, "texture": SubResource("AT_kv_d4")},
+{"duration": 1.0, "texture": SubResource("AT_kv_d5")}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RS_kv_body"]
+size = Vector2(18, 28)
+
+[sub_resource type="RectangleShape2D" id="RS_kv_stomp"]
+size = Vector2(18, 6)
+
+[sub_resource type="RectangleShape2D" id="RS_kv_trigger"]
+size = Vector2(260, 80)
+
+[sub_resource type="RectangleShape2D" id="RS_kv_sword"]
+size = Vector2(26, 22)
+
+[node name="khorvan" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_kvscript")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SF_khorvan")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+shape = SubResource("RS_kv_body")
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+target_position = Vector2(-14, 0)
+collision_mask = 6
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+target_position = Vector2(0, 14)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("10_hitbox")]
+
+[node name="collision2" type="CollisionShape2D" parent="hitbox"]
+visible = false
+position = Vector2(0, -32)
+shape = SubResource("RS_kv_stomp")
+
+[node name="sword_hurtbox" type="StaticBody2D" parent="." groups=["enemies"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="collision" type="CollisionShape2D" parent="sword_hurtbox"]
+visible = false
+position = Vector2(0, -14)
+shape = SubResource("RS_kv_sword")
+disabled = true
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="collision" type="CollisionShape2D" parent="trigger"]
+visible = false
+position = Vector2(0, -20)
+shape = SubResource("RS_kv_trigger")
+
+[node name="battle_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_battle")
+volume_db = -80.0
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
