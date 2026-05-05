@@ -12,6 +12,19 @@ var current_checkpoint = null
 var spawn_position: Vector2 = Vector2.ZERO
 var respawn_offset: Vector2 = Vector2(0, -4)
 
+# Bosses já derrotados pelo player nessa run.
+# Chave = id do boss (ex: "vessa", "khorvan"). Valor = true quando derrotado.
+var bosses_defeated: Dictionary = {}
+
+
+func mark_boss_defeated(boss_id: String) -> void:
+	bosses_defeated[boss_id] = true
+
+
+func is_boss_defeated(boss_id: String) -> bool:
+	return bosses_defeated.get(boss_id, false)
+
+
 func respawn_player():
 	if player == null:
 		return

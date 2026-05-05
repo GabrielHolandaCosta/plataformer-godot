@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://llrsi82nweq6" path="res://prefabs/fallzone.tscn" id="35_2u1gh"]
 [ext_resource type="PackedScene" uid="uid://6jd25aaerbuq" path="res://actors/khorvan.tscn" id="36_y28r6"]
 [ext_resource type="PackedScene" uid="uid://rovwp6truy0s" path="res://prefabs/checkpoint.tscn" id="37_vn1sa"]
+[ext_resource type="PackedScene" uid="uid://c43v3jr3l3y5q" path="res://prefabs/goal.tscn" id="38_goal02"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_kavwb"]
 tile_data = PackedInt32Array(0, 65539, 1)
@@ -713,7 +714,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="player" parent="." node_paths=PackedStringArray("player_start_position") instance=ExtResource("2_hy6a4")]
-position = Vector2(2911, 294)
+position = Vector2(69, 343)
 player_start_position = NodePath("../player_start_position")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -1019,5 +1020,12 @@ position = Vector2(2748, 385)
 
 [node name="player_start_position" type="Marker2D" parent="."]
 position = Vector2(69, 336)
+
+[node name="goal" parent="." instance=ExtResource("38_goal02")]
+position = Vector2(3500, 211)
+next_level = "res://levels/world_01.tscn"
+requires_boss = "khorvan"
+transition_title = "FIM DO CICLO"
+transition_subtitle = "...por enquanto"
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

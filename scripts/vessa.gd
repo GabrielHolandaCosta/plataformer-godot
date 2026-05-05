@@ -631,6 +631,7 @@ func _finish_death() -> void:
 	if not is_instance_valid(self):
 		return
 	Globals.score += enemy_score
+	Globals.mark_boss_defeated("vessa")
 	queue_free()
 
 
