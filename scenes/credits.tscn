@@ -1,0 +1,450 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccreditsfin01"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_cr"]
+[ext_resource type="FontFile" uid="uid://o52k2nui2ji" path="res://assets/Extras/fonts/RevMiniPixel.ttf" id="2_font"]
+
+[sub_resource type="LabelSettings" id="LS_prompt"]
+font = ExtResource("2_font")
+font_size = 16
+font_color = Color(0.95, 0.95, 0.95, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.85)
+shadow_offset = Vector2(2, 2)
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cr")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.04, 0.08, 1)
+mouse_filter = 2
+
+[node name="vignette" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.05, 0.12, 1)
+mouse_filter = 2
+
+[node name="scroll" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+clip_contents = true
+mouse_filter = 2
+
+[node name="content" type="VBoxContainer" parent="scroll"]
+custom_minimum_size = Vector2(560, 0)
+offset_left = 40.0
+offset_top = 320.0
+offset_right = 600.0
+offset_bottom = 600.0
+theme_override_constants/separation = 6
+
+[node name="title" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "PLATAFORM 2D GODOT 4.0"
+horizontal_alignment = 1
+
+[node name="subtitle" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.8, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "— Obrigado por Jogar —"
+horizontal_alignment = 1
+
+[node name="spacer1" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="dev_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.55, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "DESENVOLVIMENTO"
+horizontal_alignment = 1
+
+[node name="dev_n" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Gabriel Holanda"
+horizontal_alignment = 1
+
+[node name="spacer_a" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="art_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.55, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "ARTE & TILESETS"
+horizontal_alignment = 1
+
+[node name="spacer_a2" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="art_grafx_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "GrafxKid"
+horizontal_alignment = 1
+
+[node name="art_grafx_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Sprite Pack 2  •  Sprite Pack 8  •  Mini FX, Items & UI  •  Seasonal Tilesets"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="art_grafx_l" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "Licença: CC0 1.0 Universal Public Domain"
+horizontal_alignment = 1
+
+[node name="spacer_a3" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="art_yansan_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "YanSan (@yansan1902)"
+horizontal_alignment = 1
+
+[node name="art_yansan_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Platformer Jungle Asset Pack  •  Forest Monsters"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="art_yansan_l" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "Twitter / Instagram: @YanSan1902"
+horizontal_alignment = 1
+
+[node name="spacer_a4" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="art_luiz_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "LuizMelo"
+horizontal_alignment = 1
+
+[node name="art_luiz_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Martial Hero  •  Monsters Creatures Fantasy (Skeleton, Goblin, Mushroom, Flying Eye)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="art_luiz_l" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "Licença: Creative Commons Zero (CC0)"
+horizontal_alignment = 1
+
+[node name="spacer_a5" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="art_distfor_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Distant Forest Pack"
+horizontal_alignment = 1
+
+[node name="art_distfor_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Green Forest  •  Swamp Forest  •  Taiga Forest"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="art_distfor_l" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "Backgrounds e tilesets de florestas"
+horizontal_alignment = 1
+
+[node name="spacer_a6" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="art_fox_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Fox Sprites"
+horizontal_alignment = 1
+
+[node name="art_fox_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "fox sprites 2d pixel — animação e faceset da Raposa"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="spacer_a7" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="art_cave_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Cave Tileset"
+horizontal_alignment = 1
+
+[node name="art_cave_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Backgrounds 1-4 e tileset de caverna"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="spacer_b" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="font_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.55, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "FONTE"
+horizontal_alignment = 1
+
+[node name="font_n" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "RevMiniPixel  —  Reversed Studio"
+horizontal_alignment = 1
+
+[node name="spacer_c" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="audio_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.55, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "ÁUDIO"
+horizontal_alignment = 1
+
+[node name="audio_n" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Trilha de fundo, SFX de moedas, pulo, hitbox e quebra"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="spacer_d" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="engine_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.55, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "ENGINE"
+horizontal_alignment = 1
+
+[node name="engine_n" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Godot Engine 4 — godotengine.org"
+horizontal_alignment = 1
+
+[node name="engine_l" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "Licença MIT (godotengine.org/license)"
+horizontal_alignment = 1
+
+[node name="spacer_e" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="legal_h" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.55, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "DIREITOS AUTORAIS"
+horizontal_alignment = 1
+
+[node name="legal_p" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Todos os assets visuais utilizados pertencem aos seus respectivos criadores e foram disponibilizados publicamente sob licenças permissivas (em sua maioria CC0). O código deste jogo é original."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="spacer_f" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="thanks" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.6, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "Obrigado, Guardião."
+horizontal_alignment = 1
+
+[node name="thanks2" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.8, 0.6, 1)
+theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "A floresta vai lembrar de você."
+horizontal_alignment = 1
+
+[node name="spacer_g" type="Control" parent="scroll/content"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="end" type="Label" parent="scroll/content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.6, 1)
+theme_override_constants/outline_size = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+text = "FIM"
+horizontal_alignment = 1
+
+[node name="prompt" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = ""
+label_settings = SubResource("LS_prompt")
+horizontal_alignment = 1
+vertical_alignment = 1

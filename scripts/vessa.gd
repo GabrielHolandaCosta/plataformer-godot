@@ -35,8 +35,8 @@ class_name VessaBoss
 @export var bg_music_target_db: float = -15.0
 @export var music_fade_time: float = 1.4
 
-const FACESET_VESSA := "res://assets/Sprite Pack 8/5 - Vessa/Falling (32 x 32).png"
-const FACESET_HERO := "res://assets/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png"
+const FACESET_VESSA := "res://assets/Sprite Pack 8/5 - Vessa/faceset/faceset.png"
+const FACESET_HERO := "res://assets/hero/faceset/faceset.png"
 const TITLE_VESSA := "Vessa"
 const TITLE_HERO := "Guardião"
 

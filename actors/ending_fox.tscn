@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cendingfox001"]
+
+[ext_resource type="Texture2D" uid="uid://b3dh4dc8eudxc" path="res://assets/amazon/fox sprites 2d pixel/Fox Sprite Sheet.png" id="1_fox"]
+
+[sub_resource type="AtlasTexture" id="AT_fox0"]
+atlas = ExtResource("1_fox")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AT_fox1"]
+atlas = ExtResource("1_fox")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AT_fox2"]
+atlas = ExtResource("1_fox")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AT_fox3"]
+atlas = ExtResource("1_fox")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AT_fox4"]
+atlas = ExtResource("1_fox")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SF_endingfox"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("AT_fox0")},
+{"duration": 1.0, "texture": SubResource("AT_fox1")},
+{"duration": 1.0, "texture": SubResource("AT_fox2")},
+{"duration": 1.0, "texture": SubResource("AT_fox3")},
+{"duration": 1.0, "texture": SubResource("AT_fox4")}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_fox0")},
+{"duration": 1.0, "texture": SubResource("AT_fox1")},
+{"duration": 1.0, "texture": SubResource("AT_fox2")},
+{"duration": 1.0, "texture": SubResource("AT_fox3")},
+{"duration": 1.0, "texture": SubResource("AT_fox4")}],
+"loop": true,
+"name": &"run",
+"speed": 14.0
+}]
+
+[node name="ending_fox" type="Node2D"]
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SF_endingfox")
+animation = &"idle"
+autoplay = "idle"

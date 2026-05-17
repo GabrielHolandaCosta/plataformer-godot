@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cm6njsw5yfbnv"]
+[gd_scene load_steps=65 format=3 uid="uid://cm6njsw5yfbnv"]
 
 [ext_resource type="Script" path="res://scripts/world_02.gd" id="1_ejbfq"]
 [ext_resource type="Texture2D" uid="uid://dchhu750187kn" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Water_frames (16 x 32).png" id="1_xeftj"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://rovwp6truy0s" path="res://prefabs/checkpoint.tscn" id="37_vn1sa"]
 [ext_resource type="PackedScene" uid="uid://c43v3jr3l3y5q" path="res://prefabs/goal.tscn" id="38_goal02"]
 [ext_resource type="PackedScene" uid="uid://clvlbound01" path="res://prefabs/level_boundary.tscn" id="39_lvlb02"]
+[ext_resource type="AudioStream" uid="uid://cped7gqngm1po" path="res://sounds/bg_music.mp3" id="41_0cr3t"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_kavwb"]
 tile_data = PackedInt32Array(0, 65539, 1)
@@ -705,7 +706,7 @@ script = ExtResource("1_ejbfq")
 tile_set = SubResource("TileSet_2djgn")
 format = 2
 layer_0/name = "ground"
-layer_0/tile_data = PackedInt32Array(1769472, 1048592, 12, 851968, 1048592, 12, 1507350, 16, 32, 1507364, 16, 32, 1507378, 16, 32, 983069, 16, 16, 983083, 16, 16, 1245248, 1835024, 0, 1507406, 16, 16, 1048667, 16, 32, 1048681, 16, 32, 1507426, 16, 32, 1507416, 262160, 24, 1507436, 262160, 24, 1507455, 16, 32, 1507469, 16, 32, 1507483, 16, 32, 1048710, 16, 16, 1048724, 16, 16, 1245354, 1835024, 0, 1507514, 16, 16, 1507526, 16, 16, 1507538, 16, 16, 1507550, 16, 16, 1769702, 1048592, 12, 852198, 1048592, 12, 1507336, 16, 16, 1310731, 1572880, 29, 1310733, 1900560, 26, 786462, 2424848, 34, 1376281, 1572880, 29, 786465, 1572880, 29, 1376277, 2162704, 26, 786456, 2162704, 26, 852013, 1572880, 29, 1376309, 1572880, 29, 786480, 1638416, 26, 1376306, 2162704, 26, 1376274, 2162704, 39, 1376289, 1638416, 26, 1376288, 1638416, 26, 852030, 2097168, 34, 1310807, 2424848, 30, 1310801, 2424848, 30, 917609, 2162704, 30, 917593, 2097168, 34, 1310829, 2097168, 34, 1310794, 2162704, 26, 786472, 14, 0, 1376303, 9, 0, 1310798, 1572880, 29, 851995, 1572880, 29, 1376292, 9, 0, 1376294, 9, 0, 852034, 14, 0, 852032, 2162704, 26, 1310809, 2162704, 26, 917596, 2162704, 26, 917606, 1900560, 26, 917612, 1572880, 29, 1376357, 1572880, 29, 1376353, 14, 0, 1245362, 1048592, 12, 1376385, 14, 0, 852106, 14, 0, 1376414, 14, 0, 1376399, 1572880, 29, 852103, 1572880, 29, 1376381, 1572880, 29, 852117, 2162704, 26, 852099, 2162704, 26, 1376396, 2162704, 26, 1376409, 2162704, 26, 852113, 1835024, 29, 852137, 9, 0, 852141, 1572880, 29, 852135, 1638416, 26, 1310905, 14, 0, 1310918, 14, 0, 1310939, 14, 0, 1310928, 14, 0, 1310932, 1572880, 29, 1310911, 1572880, 29, 1310943, 2162704, 26, 1310925, 2162704, 26, 1310913, 2162704, 26, 1310902, 1638416, 26, 1376458, 8, 0, 1376472, 8, 0)
+layer_0/tile_data = PackedInt32Array(1507350, 16, 32, 1507364, 16, 32, 1507378, 16, 32, 983069, 16, 16, 983083, 16, 16, 1245248, 1835024, 0, 1507406, 16, 16, 1048667, 16, 32, 1048681, 16, 32, 1507426, 16, 32, 1507416, 262160, 24, 1507436, 262160, 24, 1507455, 16, 32, 1507469, 16, 32, 1507483, 16, 32, 1048710, 16, 16, 1048724, 16, 16, 1245354, 1835024, 0, 1507514, 16, 16, 1507526, 16, 16, 1507538, 16, 16, 1507550, 16, 16, 1769702, 1048592, 12, 852198, 1048592, 12, 1507336, 16, 16, 1310731, 1572880, 29, 1310733, 1900560, 26, 786462, 2424848, 34, 1376281, 1572880, 29, 786465, 1572880, 29, 1376277, 2162704, 26, 786456, 2162704, 26, 852013, 1572880, 29, 1376309, 1572880, 29, 786480, 1638416, 26, 1376306, 2162704, 26, 1376274, 2162704, 39, 1376289, 1638416, 26, 1376288, 1638416, 26, 852030, 2097168, 34, 1310807, 2424848, 30, 1310801, 2424848, 30, 917609, 2162704, 30, 917593, 2097168, 34, 1310829, 2097168, 34, 1310794, 2162704, 26, 786472, 14, 0, 1376303, 9, 0, 1310798, 1572880, 29, 851995, 1572880, 29, 1376292, 9, 0, 1376294, 9, 0, 852034, 14, 0, 852032, 2162704, 26, 1310809, 2162704, 26, 917596, 2162704, 26, 917606, 1900560, 26, 917612, 1572880, 29, 1376357, 1572880, 29, 1376353, 14, 0, 1245362, 1048592, 12, 1376385, 14, 0, 852106, 14, 0, 1376414, 14, 0, 1376399, 1572880, 29, 852103, 1572880, 29, 1376381, 1572880, 29, 852117, 2162704, 26, 852099, 2162704, 26, 1376396, 2162704, 26, 1376409, 2162704, 26, 852113, 1835024, 29, 852137, 9, 0, 852141, 1572880, 29, 852135, 1638416, 26, 1310905, 14, 0, 1310918, 14, 0, 1310939, 14, 0, 1310928, 14, 0, 1310932, 1572880, 29, 1310911, 1572880, 29, 1310943, 2162704, 26, 1310925, 2162704, 26, 1310913, 2162704, 26, 1310902, 1638416, 26, 1376458, 8, 0, 1376472, 8, 0, 1245184, 1048592, 12, 458752, 1048592, 12)
 layer_1/name = "trees"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
@@ -715,7 +716,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="player" parent="." node_paths=PackedStringArray("player_start_position") instance=ExtResource("2_hy6a4")]
-position = Vector2(69, 344)
+position = Vector2(3229, 259)
 player_start_position = NodePath("../player_start_position")
 
 [node name="camera" type="Camera2D" parent="."]
@@ -1022,17 +1023,25 @@ position = Vector2(1770, 505)
 [node name="checkpoint3" parent="checkpoints" instance=ExtResource("37_vn1sa")]
 position = Vector2(2748, 385)
 
+[node name="checkpoint4" parent="checkpoints" instance=ExtResource("37_vn1sa")]
+position = Vector2(158, 505)
+
 [node name="player_start_position" type="Marker2D" parent="."]
 position = Vector2(69, 336)
 
 [node name="goal" parent="." instance=ExtResource("38_goal02")]
 position = Vector2(3689, 328)
-next_level = "res://levels/world_01.tscn"
+next_level = "res://levels/world_03.tscn"
 requires_boss = "khorvan"
-transition_title = "FIM DO CICLO"
-transition_subtitle = "...por enquanto"
+transition_title = "O CORAÇÃO DA FLORESTA"
+transition_subtitle = "Capítulo Final"
 
 [node name="level_boundary" parent="." instance=ExtResource("39_lvlb02")]
 position = Vector2(3731, 328)
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("41_0cr3t")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

@@ -1,0 +1,177 @@
+[gd_scene load_steps=33 format=3 uid="uid://cbatfantasy01"]
+
+[ext_resource type="Script" path="res://scripts/flying_eye.gd" id="1_fle"]
+[ext_resource type="Texture2D" uid="uid://cwfyiwr2j51tg" path="res://assets/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-IdleFly.png" id="2_fly"]
+[ext_resource type="Texture2D" uid="uid://b51ulsappdq3r" path="res://assets/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Hurt.png" id="3_hurt"]
+[ext_resource type="Texture2D" uid="uid://cawa110yn5las" path="res://assets/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Die.png" id="4_die"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="5_hbx"]
+
+[sub_resource type="AtlasTexture" id="AT_bat_f0"]
+atlas = ExtResource("2_fly")
+region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f1"]
+atlas = ExtResource("2_fly")
+region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f2"]
+atlas = ExtResource("2_fly")
+region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f3"]
+atlas = ExtResource("2_fly")
+region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f4"]
+atlas = ExtResource("2_fly")
+region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f5"]
+atlas = ExtResource("2_fly")
+region = Rect2(320, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f6"]
+atlas = ExtResource("2_fly")
+region = Rect2(384, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f7"]
+atlas = ExtResource("2_fly")
+region = Rect2(448, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_f8"]
+atlas = ExtResource("2_fly")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AT_bat_h0"]
+atlas = ExtResource("3_hurt")
+region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_h1"]
+atlas = ExtResource("3_hurt")
+region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_h2"]
+atlas = ExtResource("3_hurt")
+region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_h3"]
+atlas = ExtResource("3_hurt")
+region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_h4"]
+atlas = ExtResource("3_hurt")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AT_bat_d0"]
+atlas = ExtResource("4_die")
+region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d1"]
+atlas = ExtResource("4_die")
+region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d2"]
+atlas = ExtResource("4_die")
+region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d3"]
+atlas = ExtResource("4_die")
+region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d4"]
+atlas = ExtResource("4_die")
+region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d5"]
+atlas = ExtResource("4_die")
+region = Rect2(320, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d6"]
+atlas = ExtResource("4_die")
+region = Rect2(384, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d7"]
+atlas = ExtResource("4_die")
+region = Rect2(448, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d8"]
+atlas = ExtResource("4_die")
+region = Rect2(512, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d9"]
+atlas = ExtResource("4_die")
+region = Rect2(576, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d10"]
+atlas = ExtResource("4_die")
+region = Rect2(640, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_bat_d11"]
+atlas = ExtResource("4_die")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SF_bat"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("AT_bat_f0")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f1")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f2")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f3")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f4")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f5")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f6")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f7")},
+{"duration": 1.0, "texture": SubResource("AT_bat_f8")}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_bat_h0")},
+{"duration": 1.0, "texture": SubResource("AT_bat_h1")},
+{"duration": 1.0, "texture": SubResource("AT_bat_h2")},
+{"duration": 1.0, "texture": SubResource("AT_bat_h3")},
+{"duration": 1.0, "texture": SubResource("AT_bat_h4")}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_bat_d0")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d1")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d2")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d3")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d4")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d5")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d6")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d7")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d8")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d9")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d10")},
+{"duration": 1.0, "texture": SubResource("AT_bat_d11")}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RS_bat_body"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RS_bat_stomp"]
+size = Vector2(16, 4)
+
+[node name="bat" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fle")
+fly_speed = 60.0
+ledge_ray_depth = 120.0
+patrol_radius = 130.0
+sprite_faces_left = true
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("RS_bat_body")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SF_bat")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+target_position = Vector2(-16, 0)
+collision_mask = 6
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+target_position = Vector2(0, 240)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("5_hbx")]
+
+[node name="collision2" type="CollisionShape2D" parent="hitbox"]
+visible = false
+position = Vector2(0, -16)
+shape = SubResource("RS_bat_stomp")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

@@ -19,6 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_jumping := false
 var is_hurted := false
 var can_move := true
+var is_respawning := false
 
 signal player_has_died()
 
@@ -32,18 +33,22 @@ signal player_has_died()
 
 func _physics_process(delta):
 	if not can_move:
-		# Player travado por diálogo/cutscene: zera velocidade horizontal,
-		# mas mantém a gravidade pra ele aterrissar caso esteja no ar.
+		# Player travado por diálogo/cutscene: zera velocidade horizontal e
+		# acelera a queda pra evitar “flutuação” se o diálogo abrir durante
+		# o pulo. Se a velocidade vertical ainda for ascendente, corta
+		# imediatamente pra começar a cair.
 		velocity.x = 0
 		if not is_on_floor():
-			velocity.y += gravity * delta
+			if velocity.y < 0.0:
+				velocity.y = 0.0
+			velocity.y += gravity * 2.4 * delta
 		else:
 			velocity.y = 0
 		move_and_slide()
 		if is_on_floor():
 			_play_animation("idle")
 		else:
-			_play_animation("fall" if velocity.y > 10 else "jump")
+			_play_animation("fall")
 		return
 		
 	if not is_on_floor():
@@ -130,6 +135,9 @@ func _on_hurtbox_body_entered(body):
 		return
 
 	if body.get("is_dead"):
+		return
+
+	if body.get("is_stunned") == true or body.get("is_invulnerable") == true:
 		return
 
 	if is_hurted:
@@ -226,15 +234,24 @@ func play_destroy_sfx() -> void:
 	sound_sfx.queue_free()
 	
 func handle_death_zone():
+	if is_respawning:
+		return
+
+	is_respawning = true
 	Globals.player_life -= 1
 	if Globals.player_life > 0:
 		visible = false
 		set_physics_process(false)
 
 		await get_tree().create_timer(1.0).timeout
-		global_position = player_start_position.global_position
+		Globals.player = self
+		Globals.respawn_player()
+		is_jumping = false
+		is_hurted = false
+		animation.modulate = Color(1, 1, 1, 1)
 		visible = true
 		set_physics_process(true)
+		is_respawning = false
 	else:
 		visible = false
 		await get_tree().create_timer(1.0).timeout

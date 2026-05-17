@@ -1,0 +1,203 @@
+[gd_scene load_steps=24 format=3 uid="uid://cflyingobelisk1"]
+
+[ext_resource type="Script" path="res://scripts/flying_obelisk.gd" id="1_obs"]
+[ext_resource type="FontFile" uid="uid://o52k2nui2ji" path="res://assets/Extras/fonts/RevMiniPixel.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://5ynrm6oraqkb" path="res://assets/FlyingObelisk/FlyingObelisk_no_lightnings_no_letter.png" id="3_obx"]
+
+[sub_resource type="AtlasTexture" id="AT_ob0"]
+atlas = ExtResource("3_obx")
+region = Rect2(0, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob1"]
+atlas = ExtResource("3_obx")
+region = Rect2(200, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob2"]
+atlas = ExtResource("3_obx")
+region = Rect2(400, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob3"]
+atlas = ExtResource("3_obx")
+region = Rect2(600, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob4"]
+atlas = ExtResource("3_obx")
+region = Rect2(800, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob5"]
+atlas = ExtResource("3_obx")
+region = Rect2(1000, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob6"]
+atlas = ExtResource("3_obx")
+region = Rect2(1200, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob7"]
+atlas = ExtResource("3_obx")
+region = Rect2(1400, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob8"]
+atlas = ExtResource("3_obx")
+region = Rect2(1600, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob9"]
+atlas = ExtResource("3_obx")
+region = Rect2(1800, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob10"]
+atlas = ExtResource("3_obx")
+region = Rect2(2000, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob11"]
+atlas = ExtResource("3_obx")
+region = Rect2(2200, 0, 200, 400)
+[sub_resource type="AtlasTexture" id="AT_ob12"]
+atlas = ExtResource("3_obx")
+region = Rect2(2400, 0, 200, 400)
+
+[sub_resource type="SpriteFrames" id="SF_ob"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("AT_ob0")},
+{"duration": 1.0, "texture": SubResource("AT_ob1")},
+{"duration": 1.0, "texture": SubResource("AT_ob2")},
+{"duration": 1.0, "texture": SubResource("AT_ob3")},
+{"duration": 1.0, "texture": SubResource("AT_ob4")},
+{"duration": 1.0, "texture": SubResource("AT_ob5")},
+{"duration": 1.0, "texture": SubResource("AT_ob6")},
+{"duration": 1.0, "texture": SubResource("AT_ob7")},
+{"duration": 1.0, "texture": SubResource("AT_ob8")},
+{"duration": 1.0, "texture": SubResource("AT_ob9")},
+{"duration": 1.0, "texture": SubResource("AT_ob10")},
+{"duration": 1.0, "texture": SubResource("AT_ob11")},
+{"duration": 1.0, "texture": SubResource("AT_ob12")}],
+"loop": true,
+"name": &"hover",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CS_interaction"]
+radius = 36.0
+
+[sub_resource type="LabelSettings" id="LS_prompt"]
+font = ExtResource("2_font")
+font_size = 10
+font_color = Color(0.6, 0.95, 1, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.85)
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LS_sub"]
+font = ExtResource("2_font")
+font_size = 12
+font_color = Color(0.85, 0.95, 1.0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.95)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="Gradient" id="G_aura"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.4, 0.95, 1, 0.9, 0.2, 0.6, 1, 0.5, 0.05, 0.2, 0.7, 0)
+
+[sub_resource type="GradientTexture2D" id="GT_aura"]
+gradient = SubResource("G_aura")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_pulse"]
+offsets = PackedFloat32Array(0, 0.85, 1)
+colors = PackedColorArray(0.4, 0.95, 1, 0.5, 0.3, 0.7, 1, 0.2, 0.1, 0.4, 0.7, 0)
+
+[sub_resource type="GradientTexture2D" id="GT_pulse"]
+gradient = SubResource("G_pulse")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="flying_obelisk" type="Area2D" groups=["flying_obelisk"]]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_obs")
+
+[node name="interaction" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CS_interaction")
+
+[node name="body" type="Node2D" parent="."]
+position = Vector2(0, -75)
+
+[node name="pulse" type="TextureRect" parent="body"]
+modulate = Color(1, 1, 1, 0.55)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+pivot_offset = Vector2(48, 48)
+texture = SubResource("GT_pulse")
+expand_mode = 1
+
+[node name="obelisk" type="AnimatedSprite2D" parent="body"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SF_ob")
+animation = &"hover"
+autoplay = "hover"
+
+[node name="glow_inner" type="ColorRect" parent="body"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -3.0
+offset_top = -50.0
+offset_right = 3.0
+offset_bottom = 30.0
+color = Color(0.7, 1, 1, 1)
+
+[node name="aura" type="CPUParticles2D" parent="."]
+position = Vector2(0, -40)
+emitting = true
+amount = 28
+lifetime = 1.6
+texture = SubResource("GT_aura")
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector2(0, -1)
+spread = 35.0
+gravity = Vector2(0, -10)
+initial_velocity_min = 14.0
+initial_velocity_max = 32.0
+scale_amount_min = 0.4
+scale_amount_max = 1.0
+color = Color(0.4, 0.95, 1, 0.85)
+
+[node name="particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -75)
+emitting = true
+amount = 18
+lifetime = 1.0
+texture = SubResource("GT_aura")
+emission_shape = 1
+emission_sphere_radius = 6.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 28.0
+scale_amount_min = 0.3
+scale_amount_max = 0.7
+color = Color(0.6, 1, 1, 0.95)
+
+[node name="prompt" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -50.0
+offset_top = -158.0
+offset_right = 50.0
+offset_bottom = -142.0
+text = "[E] Restaurar"
+label_settings = SubResource("LS_prompt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="subtitle" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -130.0
+offset_top = -180.0
+offset_right = 130.0
+offset_bottom = -160.0
+text = "Restaure a Floresta, Guardião"
+label_settings = SubResource("LS_sub")
+horizontal_alignment = 1
+vertical_alignment = 1

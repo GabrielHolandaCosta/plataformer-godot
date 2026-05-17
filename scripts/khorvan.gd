@@ -46,8 +46,8 @@ class_name KhorvanBoss
 @export var bg_music_target_db: float = -15.0
 @export var music_fade_time: float = 1.4
 
-const FACESET_KHORVAN := "res://assets/Martial Hero/khorvan_face.tres"
-const FACESET_HERO := "res://assets/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png"
+const FACESET_KHORVAN := "res://assets/Martial Hero/faceset/faceset.png"
+const FACESET_HERO := "res://assets/hero/faceset/faceset.png"
 const TITLE_KHORVAN := "Khorvan"
 const TITLE_HERO := "Guardião"
 

@@ -1,70 +1,163 @@
-[gd_scene load_steps=8 format=3 uid="uid://chotl5ntynpp5"]
+[gd_scene load_steps=24 format=3 uid="uid://chotl5ntynpp5"]
 
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_ie3nw"]
-[ext_resource type="Texture2D" uid="uid://cs5vrk4jljjbh" path="res://assets/Mini FX, Items & UI/Mini UI/game_over.png" id="1_tbff6"]
-[ext_resource type="Theme" uid="uid://pv6y7j7iong8" path="res://default_btn.tres" id="2_7c76v"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_go"]
+[ext_resource type="FontFile" uid="uid://o52k2nui2ji" path="res://assets/Extras/fonts/RevMiniPixel.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://0vl3l0x58mp5" path="res://assets/amazon/Platformer_Jungle Asset Pack/Tree/Tree.png" id="3_tree"]
+[ext_resource type="Texture2D" uid="uid://dlr3usrodo86n" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Hurt (32 x 32).png" id="4_hero"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2k485"]
+[sub_resource type="Gradient" id="G_vignette"]
+offsets = PackedFloat32Array(0.4, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.92)
 
-[sub_resource type="Animation" id="Animation_uekaa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[sub_resource type="GradientTexture2D" id="GT_vignette"]
+gradient = SubResource("G_vignette")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Animation" id="Animation_8v23m"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[sub_resource type="Gradient" id="G_ash"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.55, 0.2, 1, 1, 0.3, 0.1, 0.7, 0.4, 0.1, 0.05, 0)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3k2sn"]
-_data = {
-"RESET": SubResource("Animation_uekaa"),
-"fade_in": SubResource("Animation_8v23m")
-}
+[sub_resource type="GradientTexture2D" id="GT_ash"]
+gradient = SubResource("G_ash")
+width = 6
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_leaf"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.55, 0.85, 0.4, 0.95, 0.35, 0.6, 0.25, 0.7, 0.15, 0.3, 0.1, 0)
+
+[sub_resource type="GradientTexture2D" id="GT_leaf"]
+gradient = SubResource("G_leaf")
+width = 6
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="G_emberglow"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(1, 0.55, 0.2, 0.9, 0.85, 0.25, 0.1, 0.4, 0.4, 0.1, 0.05, 0)
+
+[sub_resource type="GradientTexture2D" id="GT_emberglow"]
+gradient = SubResource("G_emberglow")
+width = 256
+height = 64
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="LabelSettings" id="LS_title"]
+font = ExtResource("2_font")
+font_size = 44
+font_color = Color(0.97, 0.88, 0.65, 1)
+shadow_size = 6
+shadow_color = Color(0.55, 0.13, 0.08, 0.85)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LS_subtitle"]
+font = ExtResource("2_font")
+font_size = 16
+font_color = Color(0.62, 0.7, 0.55, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.85)
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LS_hint"]
+font = ExtResource("2_font")
+font_size = 11
+font_color = Color(0.55, 0.55, 0.5, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.85)
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_normal"]
+content_margin_left = 22.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 8.0
+bg_color = Color(0.06, 0.07, 0.07, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.32, 0.22, 0.15, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_hover"]
+content_margin_left = 22.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.10, 0.07, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.55, 0.2, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_pressed"]
+content_margin_left = 22.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 8.0
+bg_color = Color(0.32, 0.16, 0.08, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.7, 0.3, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_focus"]
+content_margin_left = 22.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.75, 0.35, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_btn"]
+default_font = ExtResource("2_font")
+default_font_size = 16
+Button/colors/font_color = Color(0.92, 0.85, 0.7, 1)
+Button/colors/font_focus_color = Color(1, 0.92, 0.75, 1)
+Button/colors/font_hover_color = Color(1, 0.92, 0.75, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 0.9, 1)
+Button/constants/outline_size = 4
+Button/styles/focus = SubResource("SB_btn_focus")
+Button/styles/hover = SubResource("SB_btn_hover")
+Button/styles/normal = SubResource("SB_btn_normal")
+Button/styles/pressed = SubResource("SB_btn_pressed")
+
+[sub_resource type="AtlasTexture" id="AT_hero"]
+atlas = ExtResource("4_hero")
+region = Rect2(64, 0, 32, 32)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -73,58 +166,296 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ie3nw")
+script = ExtResource("1_go")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="bg" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.04, 0.06, 0.06, 1)
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="trees" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="tree_back" type="TextureRect" parent="trees"]
+modulate = Color(0.07, 0.10, 0.09, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -84.0
-offset_top = -42.0
-offset_right = 84.0
-offset_bottom = 42.0
+offset_left = -120.0
+offset_top = -90.0
+offset_right = 120.0
+offset_bottom = 150.0
+texture = ExtResource("3_tree")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="tree_left" type="TextureRect" parent="trees"]
+modulate = Color(0.05, 0.08, 0.07, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -110.0
+offset_right = 200.0
+offset_bottom = 170.0
+texture = ExtResource("3_tree")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="tree_right" type="TextureRect" parent="trees"]
+modulate = Color(0.05, 0.08, 0.07, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -110.0
+offset_right = 40.0
+offset_bottom = 170.0
+texture = ExtResource("3_tree")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ground_line" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.55)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -78.0
+offset_right = -60.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.16, 0.10, 0.07, 1)
+mouse_filter = 2
+
+[node name="vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
-[node name="GameOver_Title" type="TextureRect" parent="VBoxContainer"]
+[node name="vig_tex" type="TextureRect" parent="vignette"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GT_vignette")
+expand_mode = 1
+stretch_mode = 1
+mouse_filter = 2
+
+[node name="particles" type="Node2D" parent="."]
+
+[node name="ashes" type="CPUParticles2D" parent="particles"]
+position = Vector2(320, -10)
+emitting = false
+amount = 50
+lifetime = 5.0
+preprocess = 3.0
+texture = SubResource("GT_ash")
+emission_shape = 3
+emission_rect_extents = Vector2(360, 4)
+direction = Vector2(0, 1)
+spread = 18.0
+gravity = Vector2(0, 18)
+initial_velocity_min = 8.0
+initial_velocity_max = 22.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+linear_accel_min = 0.0
+linear_accel_max = 5.0
+scale_amount_min = 0.4
+scale_amount_max = 1.1
+color = Color(1, 0.55, 0.2, 1)
+
+[node name="leaves" type="CPUParticles2D" parent="particles"]
+position = Vector2(320, -10)
+emitting = false
+amount = 14
+lifetime = 7.0
+preprocess = 3.0
+texture = SubResource("GT_leaf")
+emission_shape = 3
+emission_rect_extents = Vector2(360, 4)
+direction = Vector2(0, 1)
+spread = 35.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 6.0
+initial_velocity_max = 14.0
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+scale_amount_min = 0.6
+scale_amount_max = 1.3
+color = Color(0.55, 0.85, 0.4, 0.85)
+
+[node name="fallen_hero" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -110.0
+offset_right = 16.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AT_hero")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="center" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -90.0
+offset_right = 260.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ember_glow" type="TextureRect" parent="center"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 10.0
+pivot_offset = Vector2(200, 30)
+texture = SubResource("GT_emberglow")
+expand_mode = 1
+stretch_mode = 1
+mouse_filter = 2
+
+[node name="title" type="Label" parent="center"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -32.0
+offset_bottom = 28.0
+grow_horizontal = 2
+pivot_offset = Vector2(260, 30)
+text = "VOCÊ TOMBOU"
+label_settings = SubResource("LS_title")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="divider" type="ColorRect" parent="center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = 36.0
+offset_right = 70.0
+offset_bottom = 38.0
+color = Color(0.85, 0.5, 0.18, 0.9)
+mouse_filter = 2
+
+[node name="subtitle" type="Label" parent="center"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 48.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "…mas a floresta lembra de você."
+label_settings = SubResource("LS_subtitle")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -70.0
+offset_right = 180.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_btn")
+alignment = 1
+theme_override_constants/separation = 18
+
+[node name="btn_retry" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
-texture = ExtResource("1_tbff6")
+pivot_offset = Vector2(85, 18)
+focus_mode = 2
+text = "Tentar Novamente"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="btn_quit" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2k485")
+pivot_offset = Vector2(60, 18)
+focus_mode = 2
+text = "Sair"
 
-[node name="Restart_Btn" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_7c76v")
-text = "Restart"
+[node name="hint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -22.0
+offset_right = 200.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "← → escolher    ENTER confirmar    ESC sair"
+label_settings = SubResource("LS_hint")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2k485")
-
-[node name="Quit_Btn" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_7c76v")
-text = "Quit Game"
-
-[node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "fade_in"
-libraries = {
-"": SubResource("AnimationLibrary_3k2sn")
-}
-
-[connection signal="pressed" from="VBoxContainer/Restart_Btn" to="." method="_on_restart_btn_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit_Btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="focus_entered" from="buttons/btn_retry" to="." method="_on_btn_focus_entered" binds=[null]]
+[connection signal="focus_exited" from="buttons/btn_retry" to="." method="_on_btn_focus_exited" binds=[null]]
+[connection signal="pressed" from="buttons/btn_retry" to="." method="_on_retry_pressed"]
+[connection signal="focus_entered" from="buttons/btn_quit" to="." method="_on_btn_focus_entered" binds=[null]]
+[connection signal="focus_exited" from="buttons/btn_quit" to="." method="_on_btn_focus_exited" binds=[null]]
+[connection signal="pressed" from="buttons/btn_quit" to="." method="_on_quit_pressed"]

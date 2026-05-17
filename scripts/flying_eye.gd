@@ -8,6 +8,15 @@ extends CharacterBody2D
 @export var hover_frequency: float = 1.4
 @export var ledge_ray_forward: float = 8.0
 @export var ledge_ray_depth: float = 240.0
+# Patrulha: distância máxima do spawn em que o bicho pode se afastar.
+# 0 = sem limite (comportamento antigo, voa até bater em alguma parede).
+# Quando > 0, ao se afastar tanto do spawn ele dá meia-volta. Útil pra
+# inimigos voadores em arenas abertas onde o ground_detector não pega
+# limbo (porque o chão fica longe demais embaixo).
+@export var patrol_radius: float = 0.0
+# Quando true, a flip_h é invertida — pra sprites cuja arte naturalmente
+# já está virada pra esquerda em vez da direita.
+@export var sprite_faces_left: bool = false
 
 const FADE_DELAY    := 1.2
 const FADE_DURATION := 0.55
@@ -20,6 +29,7 @@ var is_stunned: bool = false
 var is_dead: bool = false
 var _hover_t: float = 0.0
 var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var _spawn_x: float = 0.0
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var collision: CollisionShape2D = $collision
@@ -33,6 +43,7 @@ func _ready() -> void:
 	if direction == 0:
 		direction = -1
 	hp = max_hp
+	_spawn_x = global_position.x
 	_update_visual_direction()
 	anim.play("fly")
 
@@ -69,6 +80,13 @@ func _physics_process(delta: float) -> void:
 		ground_detector.force_raycast_update()
 		if not ground_detector.is_colliding():
 			should_flip = true
+	# Patrulha em raio: se o bicho passou do limite, vira pra voltar.
+	if not should_flip and patrol_radius > 0.0:
+		var offset := global_position.x - _spawn_x
+		if direction > 0 and offset >= patrol_radius:
+			should_flip = true
+		elif direction < 0 and offset <= -patrol_radius:
+			should_flip = true
 	if should_flip:
 		_flip()
 
@@ -82,7 +100,10 @@ func _flip() -> void:
 
 func _update_visual_direction() -> void:
 	if anim:
-		anim.flip_h = direction == -1
+		if sprite_faces_left:
+			anim.flip_h = direction == 1
+		else:
+			anim.flip_h = direction == -1
 
 
 func take_stomp_damage() -> void:

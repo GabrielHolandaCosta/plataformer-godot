@@ -1,0 +1,190 @@
+[gd_scene load_steps=37 format=3 uid="uid://cforestenemy3"]
+
+[ext_resource type="Script" path="res://scripts/flying_eye.gd" id="1_fle"]
+[ext_resource type="Texture2D" uid="uid://6bc4kdr0l3ff" path="res://assets/FlyingForestEnemies_FREE/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Fly.png" id="2_fly"]
+[ext_resource type="Texture2D" uid="uid://bwjllfpunibeo" path="res://assets/FlyingForestEnemies_FREE/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Hit.png" id="3_hit"]
+[ext_resource type="Texture2D" uid="uid://cbtsyrch2lqax" path="res://assets/FlyingForestEnemies_FREE/Enemy3/Enemy3-No-Movement-In-Animation/Enemy3No-Move-Die.png" id="4_die"]
+[ext_resource type="PackedScene" uid="uid://c0qa25tr7hyr3" path="res://actors/hitbox.tscn" id="5_hbx"]
+
+[sub_resource type="AtlasTexture" id="AT_e3_f0"]
+atlas = ExtResource("2_fly")
+region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f1"]
+atlas = ExtResource("2_fly")
+region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f2"]
+atlas = ExtResource("2_fly")
+region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f3"]
+atlas = ExtResource("2_fly")
+region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f4"]
+atlas = ExtResource("2_fly")
+region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f5"]
+atlas = ExtResource("2_fly")
+region = Rect2(320, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f6"]
+atlas = ExtResource("2_fly")
+region = Rect2(384, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_f7"]
+atlas = ExtResource("2_fly")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AT_e3_h0"]
+atlas = ExtResource("3_hit")
+region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_h1"]
+atlas = ExtResource("3_hit")
+region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_h2"]
+atlas = ExtResource("3_hit")
+region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_h3"]
+atlas = ExtResource("3_hit")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AT_e3_d0"]
+atlas = ExtResource("4_die")
+region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d1"]
+atlas = ExtResource("4_die")
+region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d2"]
+atlas = ExtResource("4_die")
+region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d3"]
+atlas = ExtResource("4_die")
+region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d4"]
+atlas = ExtResource("4_die")
+region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d5"]
+atlas = ExtResource("4_die")
+region = Rect2(320, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d6"]
+atlas = ExtResource("4_die")
+region = Rect2(384, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d7"]
+atlas = ExtResource("4_die")
+region = Rect2(448, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d8"]
+atlas = ExtResource("4_die")
+region = Rect2(512, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d9"]
+atlas = ExtResource("4_die")
+region = Rect2(576, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d10"]
+atlas = ExtResource("4_die")
+region = Rect2(640, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d11"]
+atlas = ExtResource("4_die")
+region = Rect2(704, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d12"]
+atlas = ExtResource("4_die")
+region = Rect2(768, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d13"]
+atlas = ExtResource("4_die")
+region = Rect2(832, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d14"]
+atlas = ExtResource("4_die")
+region = Rect2(896, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d15"]
+atlas = ExtResource("4_die")
+region = Rect2(960, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AT_e3_d16"]
+atlas = ExtResource("4_die")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SF_e3"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("AT_e3_f0")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f1")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f2")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f3")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f4")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f5")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f6")},
+{"duration": 1.0, "texture": SubResource("AT_e3_f7")}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_e3_h0")},
+{"duration": 1.0, "texture": SubResource("AT_e3_h1")},
+{"duration": 1.0, "texture": SubResource("AT_e3_h2")},
+{"duration": 1.0, "texture": SubResource("AT_e3_h3")}],
+"loop": false,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("AT_e3_d0")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d1")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d2")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d3")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d4")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d5")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d6")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d7")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d8")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d9")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d10")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d11")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d12")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d13")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d14")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d15")},
+{"duration": 1.0, "texture": SubResource("AT_e3_d16")}],
+"loop": false,
+"name": &"hurt",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RS_e3_body"]
+size = Vector2(22, 22)
+
+[sub_resource type="RectangleShape2D" id="RS_e3_stomp"]
+size = Vector2(22, 6)
+
+[node name="enemy3" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fle")
+fly_speed = 45.0
+max_hp = 3
+ledge_ray_depth = 120.0
+patrol_radius = 140.0
+sprite_faces_left = true
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("RS_e3_body")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SF_e3")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -12)
+target_position = Vector2(-20, 0)
+collision_mask = 6
+
+[node name="ground_detector" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -12)
+target_position = Vector2(0, 240)
+collision_mask = 2
+
+[node name="hitbox" parent="." instance=ExtResource("5_hbx")]
+
+[node name="collision2" type="CollisionShape2D" parent="hitbox"]
+visible = false
+position = Vector2(0, -24)
+shape = SubResource("RS_e3_stomp")
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

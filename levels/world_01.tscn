@@ -1138,11 +1138,16 @@ region_enabled = true
 region_rect = Rect2(0, 8, 96, 8)
 
 [node name="checkpoints" type="Node2D" parent="."]
-visible = false
 position = Vector2(-46, -161)
 
 [node name="checkpoint" parent="checkpoints" instance=ExtResource("36_t5lxt")]
-position = Vector2(661, 225)
+position = Vector2(802, 385)
+
+[node name="checkpoint2" parent="checkpoints" instance=ExtResource("36_t5lxt")]
+position = Vector2(2045, 385)
+
+[node name="checkpoint3" parent="checkpoints" instance=ExtResource("36_t5lxt")]
+position = Vector2(2892, 321)
 
 [node name="fallzone" type="Node2D" parent="."]
 
